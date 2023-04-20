@@ -1,0 +1,11 @@
+.idea/
+out/
+.idea_modules/
+Thumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.AppleDouble
+.LSOverride
+
+
