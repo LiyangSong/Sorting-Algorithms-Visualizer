@@ -2,7 +2,7 @@
 
 ### Objective
 
-Use React to develop an interative webpage showing ordering algorithm dynamically.
+Use React to develop an interative webpage showing sorting algorithm dynamically.
 
 Related algorithms: Selection Sort, Bubble Sort, Quick Sort, Merge Sort, Heap Sort, Tree Sort, etc.
 
