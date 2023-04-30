@@ -1,9 +1,20 @@
+# IntelliJ
 .idea/
 out/
 .idea_modules/
+
+# dependencies
+/node_modules
+
+# production
+/build
+
+# Windows
 Thumbs.db
 [Dd]esktop.ini
 $RECYCLE.BIN/
+
+# Mac
 .DS_Store
 .AppleDouble
 .LSOverride
