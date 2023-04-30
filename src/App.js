@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import './App.css'
 
 export default function App() {
     const initialNum = {
@@ -8,7 +9,7 @@ export default function App() {
     const [num, setNum] = useState(initialNum);
 
     return (
-        <div>
+        <div className='app'>
             <h1>Are we good?</h1>
             <ul style={{ fontSize: '28px' }}>
                 <li key={1}>
