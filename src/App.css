@@ -1,5 +1,54 @@
-.app {
+.navBar {
+    font-size: 17px;
+    text-decoration: None;
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    padding: 8px 15px 8px 15px;
     display: flex;
     align-items: center;
-    height: 100vh;
+    justify-content: space-between;
+}
+
+.navBar_logoArea {
+    font-family: "Ubuntu Condensed", sans-serif;
+    font-size: 22px;
+    text-decoration: None;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navBar_tabArea {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+
+.navBar_linkArea {
+    gap: 8px;
+}
+
+.tab {
+    padding: 10px;
+    border-radius: 10px;
+    color: #222222;
+    text-decoration: None;
+}
+
+.tab:hover {
+    background-color: #EEEEEE;
+}
+
+.activeTab {
+    padding: 10px;
+    border-radius: 10px;
+    color: purple;
+    background-color: papayawhip;
+    text-decoration: None;
+}
+
+svg {
+    vertical-align: middle;
 }
