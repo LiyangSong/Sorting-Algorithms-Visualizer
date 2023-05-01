@@ -26,7 +26,7 @@ export default function App() {
     );
 }
 
-function Layout(){
+function Layout() {
     return(
         <div>
             {<Header />}
