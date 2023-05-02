@@ -1,4 +1,4 @@
-export default function square({ number }) {
+export default function Square({ number }) {
     return(
         <div className="square">
             {number}
