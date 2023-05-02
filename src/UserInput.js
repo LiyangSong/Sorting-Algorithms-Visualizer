@@ -36,8 +36,16 @@ function InputArea() {
         }
     }
 
+    function handleReduceLength() {
+        if (numbersLength > 2) {
+            setNumbers(
+                numbers.slice(0, numbersLength - 2)
+            )
+        }
+    }
+
     return(
-        <div>
+        <div className="inputArea">
             {numbers.map(number => (
                 <input
                     key={number.id}
@@ -49,6 +57,7 @@ function InputArea() {
                     }}
                 />
             ))}
+            <button onClick={handleReduceLength}>－</button>
             <button onClick={handleAddLength}>＋</button>
             <ul>
                 {numbers.map(number => (
@@ -63,7 +72,7 @@ function InputArea() {
 
 function ButtonArea() {
     return(
-        <div>
+        <div className="buttonArea">
             <button>▶/■</button>
             <button>▶▶</button>
             <button>◀◀</button>
