@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
 import './App.css'
 import Header from './Header.js'
-import Footer from './Footer.js'
 import ContentProvider from "./ContentProvider.js";
 
 export default function App() {
@@ -27,7 +26,6 @@ function Layout() {
         <div className="layout">
             <Header />
             <Outlet />
-            <Footer />
         </div>
     )
 }
