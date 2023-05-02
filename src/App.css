@@ -76,7 +76,7 @@ svg {
 
 .description {
     padding: 0 80px 0 80px;
-    height: 80px;
+    min-height: 80px;
     font-family: "Ubuntu", sans-serif;
     font-size: 30px;
     color: #222222;
@@ -125,6 +125,8 @@ input {
 }
 
 .animationArea {
+    display: flex;
+    gap: 30px;
 }
 
 .footer {

@@ -6,6 +6,7 @@ export default function AnimationArea() {
             <Square number={1} />
             <Square number={2} />
             <Square number={3} />
+            <Square number={4} />
         </div>
     )
 }
