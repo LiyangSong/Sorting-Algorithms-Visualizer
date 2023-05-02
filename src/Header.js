@@ -4,7 +4,7 @@ import githubLogo from './assets/github-mark.png';
 
 export default function Header() {
     return(
-        <nav className="navBar">
+        <nav className="header">
             <LogoArea />
             <TabArea />
             <LinkArea />
@@ -14,7 +14,7 @@ export default function Header() {
 
 function LogoArea() {
     return(
-        <a href="/" className="navBar_logoArea">
+        <a href="/" className="header_logoArea">
             <img src={logo} alt="Web Logo" height="50px" width="50px"/>
             <div>Sorting Algorithms Visualizer</div>
         </a>
@@ -33,7 +33,7 @@ function TabArea() {
     ];
 
     return(
-        <div className="navBar_tabArea">
+        <div className="header_tabArea">
             {tabs.map(tab => (
                 <NavLink
                     to={tab.path}
@@ -50,10 +50,8 @@ function TabArea() {
 
 function LinkArea() {
     return(
-        <div className="navBar_linkArea">
-            <a href="https://github.com/LiyangSong/Sorting-Algorithms-Visualizer" target="_blank">
-                <img src={githubLogo} alt="Github Logo" height="30px"/>
-            </a>
-        </div>
+        <a href="https://github.com/LiyangSong/Sorting-Algorithms-Visualizer" target="_blank" className="header_linkArea">
+            <img src={githubLogo} alt="Github Logo" height="30px"/>
+        </a>
     )
 }

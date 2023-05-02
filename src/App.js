@@ -1,37 +1,33 @@
 import React from 'react';
-import {Route, Routes, Outlet} from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
 import './App.css'
 import Header from './Header.js'
-import BubbleSort from "./algorithms/BubbleSort";
-import InsertionSort from "./algorithms/InsertionSort";
-import SelectionSort from "./algorithms/SelectionSort";
-import QuickSort from "./algorithms/QuickSort";
-import MergeSort from "./algorithms/MergeSort";
-import HeapSort from "./algorithms/HeapSort";
+import Footer from './Footer.js'
+import ContentProvider from "./ContentProvider.js";
 
 export default function App() {
     return (
-        <div>
+        <BrowserRouter>
             <Routes>
-                <Route path='/' element={<Layout />}>
-                    <Route path='bubble-sort' element={<BubbleSort />} />
-                    <Route path='insertion-sort' element={<InsertionSort />} />
-                    <Route path='selection-sort' element={<SelectionSort />} />
-                    <Route path='quick-sort' element={<QuickSort />} />
-                    <Route path='merge-sort' element={<MergeSort />} />
-                    <Route path='heap-sort' element={<HeapSort />} />
+                <Route path="/" element={<Layout />}>
+                    <Route path="bubble-sort" element={<ContentProvider sortType="bubbleSort" />} />
+                    <Route path="insertion-sort" element={<ContentProvider sortType="insertionSort" />} />
+                    <Route path="selection-sort" element={<ContentProvider sortType="selectionSort" />} />
+                    <Route path="quick-sort" element={<ContentProvider sortType="quickSort" />} />
+                    <Route path="merge-sort" element={<ContentProvider sortType="mergeSort" />} />
+                    <Route path="heap-sort" element={<ContentProvider sortType="heapSort" />} />
                 </Route>
             </Routes>
-        </div>
-    );
+        </BrowserRouter>
+    )
 }
 
 function Layout() {
     return(
-        <div>
-            {<Header />}
-            <hr />
+        <div className="layout">
+            <Header />
             <Outlet />
+            <Footer />
         </div>
     )
 }
