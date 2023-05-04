@@ -14,7 +14,7 @@ export default function numbersReducer(numbers, action) {
         case "addLength": {
             if (numbers.length < 10) {
                 return [
-                    ...numbers,
+                    ...numbers,//previous numbers
                     {id: numbers.length + 1, number: null}
                 ]
             } else {
