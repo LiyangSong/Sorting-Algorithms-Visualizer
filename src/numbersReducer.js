@@ -15,7 +15,11 @@ export default function numbersReducer(numbers, action) {
         case "changeNumber": {
             return numbers.map(number => {
                 if (number.id === action.id) {
-                    return {id: action.id, number: action.nextNumber};
+                    return {
+                        id: action.id,
+                        number: action.nextNumber,
+                        isActive: false,
+                        isSorted: false};
                 } else {
                     return number;
                 }

@@ -1,4 +1,8 @@
-export default function ButtonArea({ onStartPause, onStepForward, onStepBackWard }) {
+export default function ButtonArea({
+    onStartPause,
+    onStepForward,
+    onStepBackWard
+}) {
     return(
         <div className="buttonArea">
             <button key="startPause" onClick={onStartPause}>▶/■</button>

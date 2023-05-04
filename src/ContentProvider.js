@@ -9,11 +9,11 @@ import Footer from './Footer.js';
 import numbersReducer from "./numbersReducer.js";
 
 export const initialNumbers = [
-    {id: 1, number: null, isActive: false, isOrdered: false},
-    {id: 2, number: null, isActive: false, isOrdered: false},
-    {id: 3, number: null, isActive: false, isOrdered: false},
-    {id: 4, number: null, isActive: false, isOrdered: false},
-    {id: 5, number: null, isActive: false, isOrdered: false}
+    {id: 1, number: null, isActive: false, isSorted: false},
+    {id: 2, number: null, isActive: false, isSorted: false},
+    {id: 3, number: null, isActive: false, isSorted: false},
+    {id: 4, number: null, isActive: false, isSorted: false},
+    {id: 5, number: null, isActive: false, isSorted: false}
 ]
 
 export default function ContentProvider({ sortType }) {
@@ -49,7 +49,7 @@ export default function ContentProvider({ sortType }) {
     }
 
     function handleStepForward() {
-        if (numbers.some((number) => number.isOrdered === false)) {
+        if (numbers.some((number) => number.isSorted === false)) {
             setStep(step + 1)
         }
         dispatch({
@@ -78,7 +78,7 @@ export default function ContentProvider({ sortType }) {
         }
     }
 
-    while (status === "running" && numbers.some((number) => number.isOrdered === false)) {
+    while (status === "running" && numbers.some((number) => number.isSorted === false)) {
         setStep(step + 1)
         dispatch({
             type: "sortSteps",
@@ -87,7 +87,7 @@ export default function ContentProvider({ sortType }) {
         })
     }
 
-    while (numbers.every((number) => number.isOrdered)) {
+    while (numbers.every((number) => number.isSorted)) {
         setStatus("complete")
     }
 

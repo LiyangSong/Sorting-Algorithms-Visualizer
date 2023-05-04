@@ -2,7 +2,7 @@ export default function bubbleSort(numbers, step) {
     const result = bubbleSortResult(numbers)
     const currentResult = result.find(r => r.step === step)
     const currentNumbers = currentResult.numbers
-    const currentLog = currentResult.log
+    //const currentLog = currentResult.log
 
     return currentNumbers;
 }
@@ -14,11 +14,11 @@ function bubbleSortResult(numbers) {
         log: "Initial Numbers."
     }];
     let currentStep = 0;
-
-    let currentNumbers = numbers.slice();
+    let currentNumbers = [...numbers];
+    console.log(currentNumbers)
     for (let i = 0; i < currentNumbers.length - 1; i++) {
         currentNumbers[i].isActive = true;
-        for (let j = i + 1; j < currentNumbers.length; j++) {
+        for (let j = i + 1; j < currentNumbers.length - 1; j++) {
             let temp = currentNumbers[i];
             let log = "";
             if (parseInt(currentNumbers[i].number) > parseInt(currentNumbers[j].number)) {
@@ -34,11 +34,11 @@ function bubbleSortResult(numbers) {
                     log: log
                 })
 
-                currentNumbers[j].number.isActive = false;
+                currentNumbers[j].isActive = false;
             }
         }
-        currentNumbers[i].number.isActive = false;
-        currentNumbers[i].number.isOrdered = true;
+        currentNumbers[i].isActive = false;
+        currentNumbers[i].isSorted = true;
     }
     return result
 }
