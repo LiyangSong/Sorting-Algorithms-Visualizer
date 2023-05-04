@@ -44,7 +44,6 @@ export default function numbersReducer(numbers, action) {
         case "sortSteps": {
             switch(action.sortType) {
                 case "bubbleSort": {
-                    (action.step >= 0 & action.step < numbers.length)
                     return bubbleSort(numbers, action.step)
                 }
 
