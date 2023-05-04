@@ -1,4 +1,10 @@
-export default function InputArea({ numbers, onStartSorting, onNumberChange, onAddLength, onReduceLength }) {
+export default function InputArea({
+    numbers,
+    onStartSorting,
+    onNumberChange,
+    onAddLength,
+    onReduceLength
+}) {
     return(
         <div className="inputArea">
             <div>

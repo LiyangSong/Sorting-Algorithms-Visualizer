@@ -8,18 +8,24 @@ import ButtonArea from "./ButtonArea.js";
 import Footer from './Footer.js';
 import numbersReducer from "./numbersReducer.js";
 
+export const initialNumbers = [
+    {id: 1, number: null, isActive: false, isSorted: false},
+    {id: 2, number: null, isActive: false, isSorted: false},
+    {id: 3, number: null, isActive: false, isSorted: false},
+    {id: 4, number: null, isActive: false, isSorted: false},
+    {id: 5, number: null, isActive: false, isSorted: false}
+]
+
 export default function ContentProvider({ sortType }) {
     const [status, setStatus] = useState("input"); //"input", "ready to run", "running", "complete"
-    const [numbers, dispatch] = useReducer(numbersReducer, [
-        {id: 1, number: null},
-        {id: 2, number: null},
-        {id: 3, number: null},
-        {id: 4, number: null},
-        {id: 5, number: null}
-    ]);
+    const [numbers, dispatch] = useReducer(numbersReducer, initialNumbers);
+    const [step, setStep] = useState(0);
 
     useEffect(() => {
         setStatus("input");
+        dispatch({
+            type: "initialize"
+        })
     }, [useLocation()]);
 
     function handleNumberChange(id, nextNumber) {
@@ -42,6 +48,50 @@ export default function ContentProvider({ sortType }) {
         })
     }
 
+    function handleStepForward() {
+        if (numbers.some((number) => number.isSorted === false)) {
+            setStep(step + 1)
+        }
+        dispatch({
+            type: "sortSteps",
+            sortType: sortType,
+            step: step
+        })
+    }
+
+    function handleStepBackward() {
+        if (step > 0) {
+            setStep(step - 1);
+        }
+        dispatch({
+            type: "sortSteps",
+            sortType: sortType,
+            step: step
+        })
+    }
+
+    function handleStartPause() {
+        if (status !== "running") {
+            setStatus("running")
+        } else {
+            setStatus("ready to run")
+        }
+    }
+
+    while (status === "running" && numbers.some((number) => number.isSorted === false)) {
+        setStep(step + 1)
+        dispatch({
+            type: "sortSteps",
+            sortType: sortType,
+            step: step
+        })
+    }
+
+    while (numbers.every((number) => number.isSorted)) {
+        setStatus("complete")
+    }
+
+
     return(
         <div className="contentProvider">
             {status === "input" ? (
@@ -61,7 +111,10 @@ export default function ContentProvider({ sortType }) {
                     <LogArea sortType={sortType} />
                     <AnimationArea
                         numbers={numbers} />
-                    <ButtonArea />
+                    <ButtonArea
+                        onStartPause={handleStartPause}
+                        onStepForward={handleStepForward}
+                        onStepBackWard={handleStepBackward}/>
                     <Footer />
                 </>
             )}
