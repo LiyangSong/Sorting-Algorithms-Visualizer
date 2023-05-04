@@ -118,12 +118,14 @@ input {
 .animationArea {
     display: flex;
     gap: 30px;
+    padding: 30px 80px 30px 80px;
 }
 
 
 
 .buttonArea {
-
+    display: flex;
+    gap: 20px;
 }
 
 .square {
