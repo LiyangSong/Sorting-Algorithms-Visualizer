@@ -1,9 +1,9 @@
 import bubbleSort from './algorithms/bubbleSort.js';
-import insertionSort from './algorithms/InsertionSort.js';
-import selectionSort from './algorithms/SelectionSort.js';
-import quickSort from './algorithms/QuickSort.js';
-import mergeSort from './algorithms/MergeSort.js';
-import heapSort from './algorithms/HeapSort.js';
+import insertionSort from './algorithms/insertionSort.js';
+import selectionSort from './algorithms/selectionSort.js';
+import quickSort from './algorithms/quickSort.js';
+import mergeSort from './algorithms/mergeSort.js';
+import heapSort from './algorithms/heapSort.js';
 import { initialNumbers } from './ContentProvider.js';
 
 export default function numbersReducer(numbers, action) {
