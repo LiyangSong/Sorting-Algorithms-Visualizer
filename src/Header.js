@@ -36,6 +36,7 @@ function TabArea() {
         <div className="header_tabArea">
             {tabs.map(tab => (
                 <NavLink
+                    key={tab.label}
                     to={tab.path}
                     className={({ isActive }) => (
                         isActive ? "activeTab" : "tab"

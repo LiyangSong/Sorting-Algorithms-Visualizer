@@ -1,9 +1,12 @@
-export default function ButtonArea() {
+export default function ButtonArea({
+    onStepForward,
+    onStepBackward
+}) {
     return(
         <div className="buttonArea">
-            <button>▶/■</button>
-            <button>▶▶</button>
-            <button>◀◀</button>
+            <button key="startPause">▶/■</button>
+            <button key="stepForward" onClick={onStepForward}>▶▶</button>
+            <button key="stepBackward" onClick={onStepBackward}>◀◀</button>
         </div>
     )
 }
