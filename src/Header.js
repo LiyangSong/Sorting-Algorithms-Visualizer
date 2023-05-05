@@ -8,7 +8,6 @@ export default function Header() {
             <LogoArea />
             <TabArea />
             <LinkArea />
-            <Contact />
         </nav>
     )
 }
@@ -57,13 +56,5 @@ function LinkArea() {
     )
 }
 
-function Contact() {
-    return (
-      <div className="header_contact">
-        <a href="mailto:xxxxxx@xxxxxxx.com" className="contact-link">
-          Contact Me
-        </a>
-      </div>
-    );
-  }
+
 
