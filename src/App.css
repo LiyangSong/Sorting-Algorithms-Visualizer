@@ -142,4 +142,23 @@ input {
     text-align: center;
     height: 20px;
     padding: 10px 80px 10px 80px;
+    background-color: hsl(0, 6%, 72%);
+    color: #4aa5ee;
+    padding: 20px;
+    text-align: center;
 }
+  
+  .footer p {
+    margin: 0;
+  }
+  
+  .footer a {
+    color: #146bdd;
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  
+
