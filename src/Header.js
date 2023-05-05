@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import logo from './assets/sorting-arrows-pastel-96.png';
+import logo from './assets/sort.png';
 import githubLogo from './assets/github-mark.png';
 
 export default function Header() {
@@ -8,6 +8,7 @@ export default function Header() {
             <LogoArea />
             <TabArea />
             <LinkArea />
+            <Contact />
         </nav>
     )
 }
@@ -55,3 +56,14 @@ function LinkArea() {
         </a>
     )
 }
+
+function Contact() {
+    return (
+      <div className="header_contact">
+        <a href="mailto:xxxxxx@xxxxxxx.com" className="contact-link">
+          Contact Me
+        </a>
+      </div>
+    );
+  }
+
