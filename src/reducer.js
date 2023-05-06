@@ -17,7 +17,7 @@ const initialNumbers = [
 export const initialState = {
     status: "input",
     startNumbers: [],
-    currentNumbers: [...initialNumbers],
+    currentNumbers: initialNumbers,
     step: 0,
     log: "Ready to sort."
 }
@@ -30,7 +30,8 @@ export const ACTION = {
     STARTSORTING: "startSorting",
     SORTSTEPS: "sortSteps",
     STEPFORWARD: "stepForward",
-    STEPBACKWARD: "stepBackward"
+    STEPBACKWARD: "stepBackward",
+    AUTORUN: "autoRun"
 };
 
 export default function reducer(state, action) {
@@ -95,63 +96,114 @@ export default function reducer(state, action) {
         }
 
         case "stepForward": {
-            let copiedState = deepCopy(state);
-            copiedState.status = "manually running";
-            if (copiedState.currentNumbers.some((number) => number.isSorted === false)) {
-                copiedState.step++;
+            let newState = {...state};
+            if (state.currentNumbers.some((number) => number.isSorted === false) || state.currentNumbers.some((number) => number.isActive === true)) {
+                newState.step ++;
+                newState.status = state.status === "auto running" ? "auto running" : "manually running";
                 switch (action.sortType) {
                     case "bubbleSort":
-                        copiedState.currentNumbers = bubbleSort(copiedState.startNumbers, copiedState.step)[0]
-                        copiedState.log = bubbleSort(copiedState.startNumbers, copiedState.step)[1];
+                        newState.currentNumbers = bubbleSort(newState.startNumbers, newState.step)[0]
+                        newState.log = bubbleSort(newState.startNumbers, newState.step)[1];
                         break;
                     case "insertionSort":
-                        copiedState.currentNumbers = insertionSort(copiedState.startNumbers, copiedState.step)[0];
+                        newState.currentNumbers = insertionSort(newState.startNumbers, newState.step)[0];
+                        newState.log = insertionSort(newState.startNumbers, newState.step)[1];
                         break;
                     case "selectionSort":
-                        copiedState.currentNumbers = selectionSort(copiedState.startNumbers, copiedState.step)[0];
+                        newState.currentNumbers = selectionSort(newState.startNumbers, newState.step)[0];
+                        newState.log = selectionSort(newState.startNumbers, newState.step)[1];
                         break;
                     case "quickSort":
-                        copiedState.currentNumbers = quickSort(copiedState.startNumbers, copiedState.step)[0];
+                        newState.currentNumbers = quickSort(newState.startNumbers, newState.step)[0];
+                        newState.log = quickSort(newState.startNumbers, newState.step)[1];
                         break;
                     case "mergeSort":
-                        copiedState.currentNumbers = mergeSort(copiedState.startNumbers, copiedState.step)[0];
+                        newState.currentNumbers = mergeSort(newState.startNumbers, newState.step)[0];
+                        newState.log = mergeSort(newState.startNumbers, newState.step)[1];
                         break;
                     case "heapSort":
-                        copiedState.currentNumbers = heapSort(copiedState.startNumbers, copiedState.step)[0];
+                        newState.currentNumbers = heapSort(newState.startNumbers, newState.step)[0];
+                        newState.log = heapSort(newState.startNumbers, newState.step)[1];
                         break;
                 }
+            } else {
+                newState.status = "complete";
             }
-            return copiedState;
+            return newState;
         }
 
         case "stepBackward": {
-            let copiedState = deepCopy(state);
-            copiedState.status = "manually running";
-            if (copiedState.step > 0) {
-                copiedState.step--;
+            let newState = {...state};
+            if (newState.step > 0) {
+                newState.step--;
+                newState.status = "manually running";
                 switch (action.sortType) {
                     case "bubbleSort":
-                        copiedState.currentNumbers = bubbleSort(copiedState.startNumbers, copiedState.step)[0]
-                        copiedState.log = bubbleSort(copiedState.startNumbers, copiedState.step)[1];
+                        newState.currentNumbers = bubbleSort(newState.startNumbers, newState.step)[0]
+                        newState.log = bubbleSort(newState.startNumbers, newState.step)[1];
                         break;
                     case "insertionSort":
-                        copiedState.currentNumbers = insertionSort(copiedState.startNumbers, copiedState.step)[0];
+                        newState.currentNumbers = insertionSort(newState.startNumbers, newState.step)[0];
                         break;
                     case "selectionSort":
-                        copiedState.currentNumbers = selectionSort(copiedState.startNumbers, copiedState.step)[0];
+                        newState.currentNumbers = selectionSort(newState.startNumbers, newState.step)[0];
                         break;
                     case "quickSort":
-                        copiedState.currentNumbers = quickSort(copiedState.startNumbers, copiedState.step)[0];
+                        newState.currentNumbers = quickSort(newState.startNumbers, newState.step)[0];
                         break;
                     case "mergeSort":
-                        copiedState.currentNumbers = mergeSort(copiedState.startNumbers, copiedState.step)[0];
+                        newState.currentNumbers = mergeSort(newState.startNumbers, newState.step)[0];
                         break;
                     case "heapSort":
-                        copiedState.currentNumbers = heapSort(copiedState.startNumbers, copiedState.step)[0];
+                        newState.currentNumbers = heapSort(newState.startNumbers, newState.step)[0];
                         break;
                 }
+            } else {
+                newState.status = "ready to run";
             }
-            return copiedState;
+            return newState;
+        }
+
+        case "autoRun": {
+            switch(state.status) {
+                case "ready to run": {
+                    return {
+                        ...state,
+                        status: "auto running"
+                    };
+                }
+
+                case "pause": {
+                    return {
+                        ...state,
+                        status: "auto running"
+                    };
+                }
+
+                case "manually running": {
+                    return {
+                        ...state,
+                        status: "auto running"
+                    };
+                }
+
+                case "auto running": {
+                    return {
+                        ...state,
+                        status: "pause"
+                    };
+                }
+
+                case "complete": {
+                    return {
+                        ...state,
+                        status: "auto running",
+                        log: "Ready to sort.",
+                        step: 0,
+                        currentNumbers: deepCopy(state.startNumbers)
+                    };
+                }
+            }
         }
     }
 }

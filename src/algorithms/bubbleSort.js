@@ -49,13 +49,17 @@ function bubbleSortResult(startNumbers) {
                 step: currentStep,
                 numbers: deepCopy(currentNumbers),
                 log: log
-            })
+            });
 
             for (let n = 0; n < currentNumbers.length; n++) {
                 currentNumbers[n].isActive = false;
             }
         }
     }
-
-    return result
+    result.push({
+        step: currentStep + 1,
+        numbers: deepCopy(currentNumbers),
+        log: "All set. Sorting completed."
+    });
+    return result;
 }

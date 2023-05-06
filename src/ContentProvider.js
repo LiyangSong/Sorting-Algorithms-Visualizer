@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 import { useLocation } from "react-router-dom";
 import DescriptionArea from './DescriptionArea.js';
 import InputArea from './InputArea.js';
@@ -10,34 +10,24 @@ import reducer, { ACTION, initialState } from "./reducer.js";
 
 export default function ContentProvider({ sortType }) {
     const [state, dispatch] = useReducer(reducer, initialState);
-    console.log(state);
+    let intervalId = useRef(null);
+
     useEffect(() => {
         dispatch({
             type: ACTION.INITIALIZE
         })
     }, [useLocation()]);
 
-    // useEffect(() => {
-    //     if (status === "ready to run") {
-    //         setStartNumbers([...numbers]);
-    //     }
-    //     if (status === "running" && numbers.some(number => number.isSorted === false)) {
-    //         setStep(prevStep => prevStep + 1);
-    //     }
-    //     if (numbers.every(number => number.isSorted)) {
-    //         setStatus("complete");
-    //     }
-    // }, [numbers, status])
-    //
-    // useEffect(() => {
-    //     if (status === "running" || status === "manually running") {
-    //         dispatchNumbers({
-    //             type: "sortSteps",
-    //             sortType: sortType,
-    //             step: step
-    //         })
-    //     }
-    // }, [step])
+    useEffect(() => {
+        if (state.status === "auto running") {
+            intervalId.current = setInterval(() => {
+                handleStepForward();
+            }, 800);
+        }
+        if (state.status === "complete" || state.status === "pause") {
+            clearInterval(intervalId.current);
+        }
+    }, [state.status])
 
     function handleInputNumber(id, inputNumber) {
         dispatch({
@@ -79,13 +69,11 @@ export default function ContentProvider({ sortType }) {
         })
     }
 
-    // function handleStartPause() {
-    //     if (status !== "running") {
-    //         setStatus("running")
-    //     } else {
-    //         setStatus("manually running")
-    //     }
-    // }
+    function handleAutoRun() {
+        dispatch({
+            type: ACTION.AUTORUN,
+        })
+    }
 
 
     return(
@@ -108,8 +96,12 @@ export default function ContentProvider({ sortType }) {
                     <AnimationArea
                         currentNumbers={state.currentNumbers} />
                     <ButtonArea
+                        onAutoRun={handleAutoRun}
                         onStepForward={handleStepForward}
-                        onStepBackward={handleStepBackward}/>
+                        onStepBackward={handleStepBackward}
+                        disableForward={state.status === "auto running" || state.status === "complete"}
+                        disableBackward={state.status === "auto running" || state.status === "ready to run"}
+                    />
                     <Footer />
                 </>
             )}
