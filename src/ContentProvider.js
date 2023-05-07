@@ -22,7 +22,7 @@ export default function ContentProvider({ sortType }) {
         if (state.status === "auto running") {
             intervalId.current = setInterval(() => {
                 handleStepForward();
-            }, 800);
+            }, 1000);
         }
         if (state.status === "complete" || state.status === "pause") {
             clearInterval(intervalId.current);
