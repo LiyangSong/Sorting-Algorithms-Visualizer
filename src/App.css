@@ -129,11 +129,15 @@ input {
 .animationArea {
     height: 200px;
     padding: 30px 80px 30px 80px;
+    animation-name: fadeIn;
+    animation-duration: 0.8s;
 }
 
 .buttonArea {
     display: flex;
     gap: 20px;
+    animation-name: fadeIn;
+    animation-duration: 0.8s;
 }
 
 .square, .activeSquare, .sortedSquare {
@@ -166,7 +170,7 @@ input {
     font-family: "Ubuntu", sans-serif;
     font-size: 12px;
     text-align: center;
-    height: 40px;
+    padding: 40px 80px 0 80px;
     display: flex;
     align-items: center;
     justify-content: center;
