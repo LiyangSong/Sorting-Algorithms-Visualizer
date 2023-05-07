@@ -1,6 +1,6 @@
 export default function LogArea({ log }) {
     return(
-        <div className="logArea">
+        <div key={log} className="logArea">
             {log}
         </div>
     )
