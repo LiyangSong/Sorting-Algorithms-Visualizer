@@ -2,6 +2,15 @@ import { NavLink } from 'react-router-dom';
 import logo from './assets/sort-down.png';
 import githubLogo from './assets/github-mark.png';
 
+export const tabs = [
+    { path: "/bubble-sort", label: "Bubble Sort" },
+    { path: "/insertion-sort", label: "Insertion Sort" },
+    { path: "/selection-sort", label: "Selection Sort" },
+    { path: "/quick-sort", label: "Quick Sort" },
+    { path: "/merge-sort", label: "Merge Sort" },
+    { path: "/heap-sort", label: "Heap Sort" },
+];
+
 export default function Header() {
     return(
         <nav className="header">
@@ -14,7 +23,7 @@ export default function Header() {
 
 function LogoArea() {
     return(
-        <a href="/" className="header_logoArea">
+        <a href="/home" className="header_logoArea">
             <img src={logo} alt="Web Logo" height="50px" width="50px"/>
             <div>Sorting Algorithms Visualizer</div>
         </a>
@@ -23,18 +32,9 @@ function LogoArea() {
 }
 
 function TabArea() {
-    const tabs = [
-        { path: "/bubble-sort", label: "Bubble Sort" },
-        { path: "/insertion-sort", label: "Insertion Sort" },
-        { path: "/selection-sort", label: "Selection Sort" },
-        { path: "/quick-sort", label: "Quick Sort" },
-        { path: "/merge-sort", label: "Merge Sort" },
-        { path: "/heap-sort", label: "Heap Sort" },
-    ];
-
     return(
         <div className="header_tabArea">
-            {tabs.map(tab => (
+            {tabs.map((tab) => (
                 <NavLink
                     key={tab.label}
                     to={tab.path}
