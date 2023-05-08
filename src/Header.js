@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import logo from './assets/sort.png';
+import logo from './assets/sort-down.png';
 import githubLogo from './assets/github-mark.png';
 
 export default function Header() {

@@ -1,9 +1,7 @@
 .layout {
     width: 100%;
-    min-width: 800px;
     display: flex;
     justify-content: center;
-    overflow: auto;
 }
 
 .header {
@@ -21,13 +19,13 @@
 
 .contentProvider {
     width: 100%;
-    position: fixed;
+    position: absolute;
     top: 100px;
+    bottom: 20px;
     max-height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
 }
 
 .header_logoArea {
@@ -71,8 +69,8 @@ svg {
 }
 
 .description {
-    padding: 30px 80px 30px 80px;
-    min-height: 120px;
+    padding: 20px 80px 20px 80px;
+    min-height: 100px;
     font-family: "Ubuntu", sans-serif;
     font-size: 30px;
     color: #222222;
@@ -81,10 +79,21 @@ svg {
 
 .inputArea {
     padding: 20px 80px 20px 80px;
-    height: 180px;
+    height: calc(100vh - 350px);
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+input {
+    text-align: center;
+    width: 50px;
+    height: 35px;
+    margin: 0 10px 0 10px;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 2px solid #222222;
+    border-left: 0;
 }
 
 .startSortingButton {
@@ -97,26 +106,31 @@ svg {
     padding: 5px 15px 5px 15px;
 }
 
-input {
-    text-align: center;
-    width: 50px;
-    height: 35px;
-    margin: 0 10px 0 10px;
-    border-top: 0;
-    border-right: 0;
-    border-bottom: 1px solid #222222;
-    border-left: 0;
+.startSortingButton:hover {
+    background-color: darkviolet;
 }
 
 .logArea {
     font-size: 22px;
     color: #555555;
+    animation-name: fadeIn;
+    animation-duration: 0.8s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .animationArea {
-    display: flex;
-    gap: 30px;
+    height: 200px;
     padding: 30px 80px 30px 80px;
+    animation-name: fadeIn;
+    animation-duration: 0.8s;
 }
 
 
@@ -124,9 +138,12 @@ input {
 .buttonArea {
     display: flex;
     gap: 20px;
+    animation-name: fadeIn;
+    animation-duration: 0.8s;
 }
 
 .square, .activeSquare, .sortedSquare {
+    top: 30%;
     font-family: "Ubuntu", sans-serif;
     font-size: 40px;
     color: #222222;
@@ -135,9 +152,11 @@ input {
     width: 60px;
     height: 60px;
     border-radius: 10px;
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: left 0.8s ease-out;
 }
 
 .activeSquare {
@@ -201,6 +220,18 @@ step 2: add css to the div */
     font-family: "Ubuntu", sans-serif;
     font-size: 12px;
     text-align: center;
-    height: 20px;
-    padding: 10px 80px 10px 80px;
+    padding: 40px 80px 0 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footer a {
+    color: #146bdd;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
 }

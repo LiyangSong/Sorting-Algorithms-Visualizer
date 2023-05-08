@@ -1,5 +1,4 @@
 import React from 'react';
-import './Footer.css'; 
 
 export default function Footer() {
     return(
@@ -12,10 +11,8 @@ export default function Footer() {
 
 function Contact() {
     return (
-      <div className="header_contact">
-        <a href="mailto:xxxxxx@xxxxxxx.com" className="contact-link">
-          Contact Me
+        <a href="mailto:song.liy@northeastern.edu" className="footer_contact">
+          Contact Us
         </a>
-      </div>
     );
   }
