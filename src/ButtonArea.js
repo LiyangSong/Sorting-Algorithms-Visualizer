@@ -1,12 +1,23 @@
 export default function ButtonArea({
+    onAutoRun,
     onStepForward,
-    onStepBackward
+    onStepBackward,
+    disableForward,
+    disableBackward
 }) {
     return(
         <div className="buttonArea">
-            <button key="startPause">▶/■</button>
-            <button key="stepForward" onClick={onStepForward}>▶▶</button>
-            <button key="stepBackward" onClick={onStepBackward}>◀◀</button>
+            <button
+                key="stepBackward"
+                onClick={onStepBackward}
+                disabled={disableBackward}
+            >◀◀</button>
+            <button key="startPause" onClick={onAutoRun}>▶/■</button>
+            <button
+                key="stepForward"
+                onClick={onStepForward}
+                disabled={disableForward}
+            >▶▶</button>
         </div>
     )
 }

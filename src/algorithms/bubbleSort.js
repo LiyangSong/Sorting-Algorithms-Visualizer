@@ -1,12 +1,9 @@
-import {deepCopy} from "../utils.js";
+import { deepCopy } from "../utils.js";
 
 export default function bubbleSort(startNumbers, step) {
     const result = bubbleSortResult(startNumbers);
     const currentResult = result.find(r => r.step === step);
-    const currentNumbers = currentResult.numbers;
-    const currentLog = currentResult.log;
-
-    return [currentNumbers, currentLog];
+    return [currentResult.numbers, currentResult.log];
 }
 
 function bubbleSortResult(startNumbers) {
@@ -49,13 +46,17 @@ function bubbleSortResult(startNumbers) {
                 step: currentStep,
                 numbers: deepCopy(currentNumbers),
                 log: log
-            })
+            });
 
             for (let n = 0; n < currentNumbers.length; n++) {
                 currentNumbers[n].isActive = false;
             }
         }
     }
-
-    return result
+    result.push({
+        step: currentStep + 1,
+        numbers: deepCopy(currentNumbers),
+        log: "All set. Sorting completed."
+    });
+    return result;
 }
