@@ -50,7 +50,7 @@
     gap: 8px;
 }
 
-.tab {
+.tab, .activeTab {
     padding: 10px;
     border-radius: 10px;
     color: #222222;
@@ -62,11 +62,8 @@
 }
 
 .activeTab {
-    padding: 10px;
-    border-radius: 10px;
     color: purple;
     background-color: papayawhip;
-    text-decoration: None;
 }
 
 svg {
@@ -112,7 +109,8 @@ input {
 }
 
 .logArea {
-
+    font-size: 22px;
+    color: #555555;
 }
 
 .animationArea {
@@ -128,17 +126,27 @@ input {
     gap: 20px;
 }
 
-.square {
+.square, .activeSquare, .sortedSquare {
     font-family: "Ubuntu", sans-serif;
     font-size: 40px;
-    color: #FFFFFF;
-    background-color: purple;
+    color: #222222;
+    background-color: #EEEEEE;
     border: 0;
     width: 60px;
     height: 60px;
     border-radius: 10px;
-    text-align: center;
-    transition: transform 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.activeSquare {
+    color: #EEEEEE;
+    background-color: purple;
+}
+
+.sortedSquare {
+    background-color: darkseagreen;
 }
 
 /* 

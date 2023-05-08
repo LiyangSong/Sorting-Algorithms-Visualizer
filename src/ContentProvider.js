@@ -1,4 +1,4 @@
-import { useEffect, useState, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { useLocation } from "react-router-dom";
 import DescriptionArea from './DescriptionArea.js';
 import InputArea from './InputArea.js';
@@ -6,101 +6,97 @@ import LogArea from "./LogArea.js";
 import AnimationArea from './AnimationArea.js';
 import ButtonArea from "./ButtonArea.js";
 import Footer from './Footer.js';
-import numbersReducer from "./numbersReducer.js";
-
-export const initialNumbers = [
-    {id: 1, number: null, isActive: false, isSorted: false},
-    {id: 2, number: null, isActive: false, isSorted: false},
-    {id: 3, number: null, isActive: false, isSorted: false},
-    {id: 4, number: null, isActive: false, isSorted: false},
-    {id: 5, number: null, isActive: false, isSorted: false}
-]
+import reducer, { ACTION, initialState } from "./reducer.js";
 
 export default function ContentProvider({ sortType }) {
-    const [status, setStatus] = useState("input"); //"input", "ready to run", "running", "complete"
-    const [numbers, dispatch] = useReducer(numbersReducer, initialNumbers);
-    const [step, setStep] = useState(0);
-
+    const [state, dispatch] = useReducer(reducer, initialState);
+    console.log(state);
     useEffect(() => {
-        setStatus("input");
         dispatch({
-            type: "initialize"
+            type: ACTION.INITIALIZE
         })
     }, [useLocation()]);
 
-    function handleNumberChange(id, nextNumber) {
+    // useEffect(() => {
+    //     if (status === "ready to run") {
+    //         setStartNumbers([...numbers]);
+    //     }
+    //     if (status === "running" && numbers.some(number => number.isSorted === false)) {
+    //         setStep(prevStep => prevStep + 1);
+    //     }
+    //     if (numbers.every(number => number.isSorted)) {
+    //         setStatus("complete");
+    //     }
+    // }, [numbers, status])
+    //
+    // useEffect(() => {
+    //     if (status === "running" || status === "manually running") {
+    //         dispatchNumbers({
+    //             type: "sortSteps",
+    //             sortType: sortType,
+    //             step: step
+    //         })
+    //     }
+    // }, [step])
+
+    function handleInputNumber(id, inputNumber) {
         dispatch({
-            type: "changeNumber",
+            type: ACTION.INPUTNUMBERS,
             id: id,
-            nextNumber: nextNumber
+            inputNumber: inputNumber
         })
     }
 
     function handleAddLength() {
         dispatch({
-            type: "addLength"
+            type: ACTION.ADDLENGTH
         })
     }
 
     function handleReduceLength() {
         dispatch({
-            type: "reduceLength"
+            type: ACTION.REDUCELENGTH
         })
     }
 
-    function handleStepForward() {
-        if (numbers.some((number) => number.isSorted === false)) {
-            setStep(step + 1)
-        }
+    function handleStartSorting() {
         dispatch({
-            type: "sortSteps",
-            sortType: sortType,
-            step: step
+            type: ACTION.STARTSORTING
+        });
+    }
+
+    function handleStepForward() {
+        dispatch({
+            type: ACTION.STEPFORWARD,
+            sortType: sortType
         })
     }
 
     function handleStepBackward() {
-        if (step > 0) {
-            setStep(step - 1);
-        }
         dispatch({
-            type: "sortSteps",
-            sortType: sortType,
-            step: step
+            type: ACTION.STEPBACKWARD,
+            sortType: sortType
         })
     }
 
-    function handleStartPause() {
-        if (status !== "running") {
-            setStatus("running")
-        } else {
-            setStatus("ready to run")
-        }
-    }
-
-    while (status === "running" && numbers.some((number) => number.isSorted === false)) {
-        setStep(step + 1)
-        dispatch({
-            type: "sortSteps",
-            sortType: sortType,
-            step: step
-        })
-    }
-
-    while (numbers.every((number) => number.isSorted)) {
-        setStatus("complete")
-    }
+    // function handleStartPause() {
+    //     if (status !== "running") {
+    //         setStatus("running")
+    //     } else {
+    //         setStatus("manually running")
+    //     }
+    // }
 
 
     return(
         <div className="contentProvider">
-            {status === "input" ? (
+            {state.status === "input" ? (
                 <>
                     <DescriptionArea sortType={sortType} />
                     <InputArea
-                        numbers={numbers}
-                        onStartSorting={() => setStatus("ready to run")}
-                        onNumberChange={handleNumberChange}
+                        currentNumbers={state.currentNumbers}
+                        onStartSorting={handleStartSorting}
+                        onInputNumber={handleInputNumber}
                         onAddLength={handleAddLength}
                         onReduceLength={handleReduceLength}
                     />
@@ -108,13 +104,12 @@ export default function ContentProvider({ sortType }) {
                 </>
             ) : (
                 <>
-                    <LogArea sortType={sortType} />
+                    <LogArea log={state.log} />
                     <AnimationArea
-                        numbers={numbers} />
+                        currentNumbers={state.currentNumbers} />
                     <ButtonArea
-                        onStartPause={handleStartPause}
                         onStepForward={handleStepForward}
-                        onStepBackWard={handleStepBackward}/>
+                        onStepBackward={handleStepBackward}/>
                     <Footer />
                 </>
             )}

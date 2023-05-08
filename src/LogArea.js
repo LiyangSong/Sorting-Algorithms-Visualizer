@@ -1,7 +1,7 @@
-export default function LogArea() {
+export default function LogArea({ log }) {
     return(
         <div className="logArea">
-            Logs
+            {log}
         </div>
     )
 }

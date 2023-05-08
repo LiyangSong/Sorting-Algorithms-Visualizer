@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import logo from './assets/sorting-arrows-pastel-96.png';
+import logo from './assets/sort.png';
 import githubLogo from './assets/github-mark.png';
 
 export default function Header() {
@@ -36,6 +36,7 @@ function TabArea() {
         <div className="header_tabArea">
             {tabs.map(tab => (
                 <NavLink
+                    key={tab.label}
                     to={tab.path}
                     className={({ isActive }) => (
                         isActive ? "activeTab" : "tab"
@@ -55,3 +56,6 @@ function LinkArea() {
         </a>
     )
 }
+
+
+
