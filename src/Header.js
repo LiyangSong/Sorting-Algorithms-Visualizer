@@ -1,14 +1,20 @@
 import { NavLink } from 'react-router-dom';
-import logo from './assets/sort-down.png';
+import logo from './assets/sort.png';
 import githubLogo from './assets/github-mark.png';
+import bubbleSortIcon from './assets/bubble.png';
+import insertionSortIcon from './assets/insertion.png';
+import selectionSortIcon from './assets/selection.png';
+import quickSortIcon from './assets/quick.png';
+import mergeSortIcon from './assets/merge.png';
+import heapSortIcon from './assets/heap.png';
 
 export const tabs = [
-    { path: "/bubble-sort", label: "Bubble Sort" },
-    { path: "/insertion-sort", label: "Insertion Sort" },
-    { path: "/selection-sort", label: "Selection Sort" },
-    { path: "/quick-sort", label: "Quick Sort" },
-    { path: "/merge-sort", label: "Merge Sort" },
-    { path: "/heap-sort", label: "Heap Sort" },
+    { path: "/bubble-sort", label: "Bubble Sort", icon: bubbleSortIcon },
+    { path: "/insertion-sort", label: "Insertion Sort", icon: insertionSortIcon },
+    { path: "/selection-sort", label: "Selection Sort", icon: selectionSortIcon },
+    { path: "/quick-sort", label: "Quick Sort", icon: quickSortIcon },
+    { path: "/merge-sort", label: "Merge Sort", icon: mergeSortIcon },
+    { path: "/heap-sort", label: "Heap Sort", icon: heapSortIcon },
 ];
 
 export default function Header() {

@@ -1,3 +1,8 @@
+* {
+    color: #222222;
+    background-color: #FFFFFF;
+}
+
 .layout {
     width: 100%;
     display: flex;
@@ -15,41 +20,84 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
 }
 
 .contentProvider, .home {
     width: 100%;
     position: absolute;
-    top: 100px;
-    bottom: 20px;
-    max-height: calc(100vh - 100px);
+    top: 60px;
+    max-height: calc(100vh - 70px);
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.home p {
+.home-description {
     font-family: "Ubuntu", sans-serif;
-    font-size: 25px;
+    font-size: 22px;
     text-align: center;
+    height: 200px;
+    padding: 40px 150px;
 }
 
 .navArea {
     display:grid;
     grid-template-columns: 300px 300px 300px;
+    gap: 10px;
+    padding: 20px;
 }
 
-.nav, .activeNav {
+.nav {
+    font-family: "Ubuntu Mono", sans-serif;
+    font-weight: bold;
     text-align: center;
-    padding: 50px;
+    text-decoration: none;
+    padding: 10px 30px;
+    border: 3px solid #222222;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
 }
 
-.activeNav {
+.nav:hover {
+    filter: drop-shadow(2px 2px 1px #555555);
+    transition: transform 0.1s ease-in;
+    transform: scale(120%);
+}
 
+.nav img, .activeNav img {
+    background-color: transparent;
+}
+
+#bubble-sort {
+    background-color: #ffe671;
+}
+
+#insertion-sort {
+    background-color: #78ffa9;
+}
+
+#selection-sort {
+    background-color: #6bb7ff;
+}
+
+#quick-sort {
+    background-color: #9cdcff;
+}
+
+#merge-sort {
+    background-color: #ff8eb3;
+}
+
+#heap-sort {
+    background-color: #ffdcd5;
 }
 
 .header_logoArea {
-    font-family: "Elephant", sans-serif;
+    font-family: "Ubuntu Mono", sans-serif;
     font-size: 22px;
     text-decoration: None;
     display: flex;
@@ -212,7 +260,7 @@ input {
     font-family: "Ubuntu", sans-serif;
     font-size: 12px;
     text-align: center;
-    padding: 40px 80px 0 80px;
+    padding: 20px 80px 0 80px;
     display: flex;
     align-items: center;
     justify-content: center;
