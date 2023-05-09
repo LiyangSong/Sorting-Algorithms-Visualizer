@@ -13,9 +13,7 @@ export default function ButtonArea({
     onJumpToComplete,
     disableForward,
     disableBackward,
-    isAutoRunning,
-
-
+    isAutoRunning
 }) {
     return(
         <div className="buttonArea">
