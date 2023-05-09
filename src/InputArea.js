@@ -1,16 +1,19 @@
-export default function InputArea({ numbers, onStartSorting, onNumberChange, onAddLength, onReduceLength }) {
+export default function InputArea({
+    currentNumbers,
+    onStartSorting,
+    onInputNumber,
+    onAddLength,
+    onReduceLength
+}) {
     return(
         <div className="inputArea">
             <div>
                 <button onClick={onReduceLength}>－</button>
-                {numbers.map(number => (
+                {currentNumbers.map(number => (
                     <input
                         key={number.id}
-                        onChange={e => {
-                            onNumberChange(
-                                number.id,
-                                e.target.value
-                            )
+                        onChange={(e) => {
+                            onInputNumber(number.id, e.target.value)
                         }}
                     />
                 ))}

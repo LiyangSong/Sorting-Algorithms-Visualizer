@@ -1,11 +1,13 @@
 import Square from './Square.js'
 
-export default function AnimationArea({ numbers }) {
+export default function AnimationArea({ currentNumbers }) {
     return(
         <div className="animationArea">
-            {numbers.map(number =>
-                number.number !== null &&
-                    <Square key={number.id} number={number.number} />
+            {currentNumbers.map(number =>
+                <Square
+                    key={number.id}
+                    number={number}
+                />
             )}
         </div>
     )
