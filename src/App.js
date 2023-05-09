@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
 import './App.css'
 import Header from './Header.js'
 import ContentProvider from "./ContentProvider.js";
+import HomePage from './HomePage';
 
 export default function App() {
     return (
@@ -30,3 +31,13 @@ function Layout() {
     )
 }
 
+
+function App() {
+  return (
+    <div className="App">
+      <HomePage />
+    </div>
+  );
+}
+
+export default App;
