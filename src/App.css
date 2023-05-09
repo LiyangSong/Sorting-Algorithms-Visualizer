@@ -106,6 +106,7 @@ svg {
 }
 
 input {
+    font-size: 20px;
     text-align: center;
     width: 50px;
     height: 35px;
