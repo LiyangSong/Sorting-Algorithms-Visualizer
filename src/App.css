@@ -134,7 +134,6 @@ input {
 }
 
 
-
 .buttonArea {
     display: flex;
     gap: 20px;
@@ -181,14 +180,6 @@ input {
 
 /* step 1: swap two div in sorting algo
 step 2: add css to the div */
-
-.square:nth-child(3) {
-  animation: swapping1 0.5s ease-in-out forwards;
-}
-
-.square:nth-child(5) {
-  animation: swapping2 0.5s ease-in-out forwards;
-}
 
 @keyframes swapping1 {
   0% {
