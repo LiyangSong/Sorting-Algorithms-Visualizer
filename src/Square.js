@@ -1,10 +1,14 @@
-export default function Square({ number, style }) {
+import { Flipped } from "react-flip-toolkit";
+
+export default function Square({ number, flipId }) {
     return(
-        <div
-            className={number.isActive ? "activeSquare" : number.isSorted ? "sortedSquare" : "square"}
-            style={style}
+        <Flipped
+            flipId={flipId}
+            key={flipId}
         >
-            {number.number}
-        </div>
+            <div className={number.isActive ? "activeSquare" : number.isSorted ? "sortedSquare" : "square"}>
+                {number.number}
+            </div>
+        </Flipped>
     )
 }
