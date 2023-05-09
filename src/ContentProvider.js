@@ -71,10 +71,22 @@ export default function ContentProvider({ sortType }) {
 
     function handleAutoRun() {
         dispatch({
-            type: ACTION.AUTORUN,
+            type: ACTION.AUTORUN
         })
     }
 
+    function handleJumpToStart() {
+        dispatch({
+            type: ACTION.JUMPTOSTART
+        })
+    }
+
+    function handleJumpToComplete() {
+        dispatch({
+            type: ACTION.JUMPTOCOMPLETE,
+            sortType: sortType
+        })
+    }
 
     return(
         <div className="contentProvider">
@@ -99,8 +111,11 @@ export default function ContentProvider({ sortType }) {
                         onAutoRun={handleAutoRun}
                         onStepForward={handleStepForward}
                         onStepBackward={handleStepBackward}
+                        onJumpToStart={handleJumpToStart}
+                        onJumpToComplete={handleJumpToComplete}
                         disableForward={state.status === "auto running" || state.status === "complete"}
                         disableBackward={state.status === "auto running" || state.status === "ready to run"}
+                        isAutoRunning={state.status === "auto running"}
                     />
                     <Footer />
                 </>

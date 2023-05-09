@@ -1,39 +1,20 @@
-import Square from './Square.js'
-import { useEffect, useState } from "react";
+import Square from './Square.js';
+import { Flipper } from "react-flip-toolkit";
 
 export default function AnimationArea({ currentNumbers }) {
-    const [windowSize, setWindowSize] = useState({
-        width: window.innerWidth,
-        height: window.innerHeight,
-    });
-
-    useEffect(() => {
-        function handleResize() {
-            setWindowSize({
-                width: window.innerWidth,
-                height: window.innerHeight,
-            });
-        }
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    });
-
     return(
-        <div className="animationArea">
-            {currentNumbers.map((number, index) => {
+        <Flipper
+            flipKey={currentNumbers.map((number) => number.id).join('')}
+            className="animationArea"
+        >
+            {currentNumbers.map((number) => {
                 return (
                     <Square
-                        key={number.id}
+                        flipId={number.id}
                         number={number}
-                        style={{
-                            left: (windowSize.width + 40 - currentNumbers.length * 100) / 2 + index * 100
-                        }}
                     />
                 )
             })}
-        </div>
+        </Flipper>
     )
 }

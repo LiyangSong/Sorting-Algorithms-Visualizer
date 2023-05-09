@@ -1,9 +1,9 @@
-import bubbleSort from './algorithms/bubbleSort.js';
-import insertionSort from './algorithms/insertionSort.js';
-import selectionSort from './algorithms/selectionSort.js';
-import quickSort from './algorithms/quickSort.js';
-import mergeSort from './algorithms/mergeSort.js';
-import heapSort from './algorithms/heapSort.js';
+import bubbleSortResult from './algorithms/bubbleSort.js';
+import insertionSortResult from './algorithms/insertionSort.js';
+import selectionSortResult from './algorithms/selectionSort.js';
+import quickSortResult from './algorithms/quickSort.js';
+import mergeSortResult from './algorithms/mergeSort.js';
+import heapSortResult from './algorithms/heapSort.js';
 import { deepCopy } from "./utils.js";
 
 const initialNumbers = [
@@ -31,7 +31,9 @@ export const ACTION = {
     SORTSTEPS: "sortSteps",
     STEPFORWARD: "stepForward",
     STEPBACKWARD: "stepBackward",
-    AUTORUN: "autoRun"
+    AUTORUN: "autoRun",
+    JUMPTOSTART: "jumpToStart",
+    JUMPTOCOMPLETE: "jumpToComplete"
 };
 
 export default function reducer(state, action) {
@@ -100,32 +102,7 @@ export default function reducer(state, action) {
             if (state.currentNumbers.some((number) => number.isSorted === false) || state.currentNumbers.some((number) => number.isActive === true)) {
                 newState.step ++;
                 newState.status = state.status === "auto running" ? "auto running" : "manually running";
-                switch (action.sortType) {
-                    case "bubbleSort":
-                        newState.currentNumbers = bubbleSort(newState.startNumbers, newState.step)[0]
-                        newState.log = bubbleSort(newState.startNumbers, newState.step)[1];
-                        break;
-                    case "insertionSort":
-                        newState.currentNumbers = insertionSort(newState.startNumbers, newState.step)[0];
-                        newState.log = insertionSort(newState.startNumbers, newState.step)[1];
-                        break;
-                    case "selectionSort":
-                        newState.currentNumbers = selectionSort(newState.startNumbers, newState.step)[0];
-                        newState.log = selectionSort(newState.startNumbers, newState.step)[1];
-                        break;
-                    case "quickSort":
-                        newState.currentNumbers = quickSort(newState.startNumbers, newState.step)[0];
-                        newState.log = quickSort(newState.startNumbers, newState.step)[1];
-                        break;
-                    case "mergeSort":
-                        newState.currentNumbers = mergeSort(newState.startNumbers, newState.step)[0];
-                        newState.log = mergeSort(newState.startNumbers, newState.step)[1];
-                        break;
-                    case "heapSort":
-                        newState.currentNumbers = heapSort(newState.startNumbers, newState.step)[0];
-                        newState.log = heapSort(newState.startNumbers, newState.step)[1];
-                        break;
-                }
+                [newState.currentNumbers, newState.log] = runSort(action.sortType, newState.startNumbers, newState.step);
             } else {
                 newState.status = "complete";
             }
@@ -137,27 +114,7 @@ export default function reducer(state, action) {
             if (newState.step > 0) {
                 newState.step--;
                 newState.status = "manually running";
-                switch (action.sortType) {
-                    case "bubbleSort":
-                        newState.currentNumbers = bubbleSort(newState.startNumbers, newState.step)[0]
-                        newState.log = bubbleSort(newState.startNumbers, newState.step)[1];
-                        break;
-                    case "insertionSort":
-                        newState.currentNumbers = insertionSort(newState.startNumbers, newState.step)[0];
-                        break;
-                    case "selectionSort":
-                        newState.currentNumbers = selectionSort(newState.startNumbers, newState.step)[0];
-                        break;
-                    case "quickSort":
-                        newState.currentNumbers = quickSort(newState.startNumbers, newState.step)[0];
-                        break;
-                    case "mergeSort":
-                        newState.currentNumbers = mergeSort(newState.startNumbers, newState.step)[0];
-                        break;
-                    case "heapSort":
-                        newState.currentNumbers = heapSort(newState.startNumbers, newState.step)[0];
-                        break;
-                }
+                [newState.currentNumbers, newState.log] = runSort(action.sortType, newState.startNumbers, newState.step);
             } else {
                 newState.status = "ready to run";
             }
@@ -205,5 +162,53 @@ export default function reducer(state, action) {
                 }
             }
         }
+
+        case "jumpToStart": {
+            return {
+                ...state,
+                step: 0,
+                status: "ready to run",
+                currentNumbers: deepCopy(state.startNumbers),
+                log: "Ready to sort."
+            };
+        }
+
+        case "jumpToComplete": {
+            let newState = {...state, status: "complete"};
+            newState.step = getSortResult(action.sortType, newState.startNumbers).length - 1;
+            [newState.currentNumbers, newState.log] = runSort(action.sortType, newState.startNumbers, newState.step);
+            return newState;
+        }
     }
+}
+
+function runSort(sortType, startNumbers, step) {
+    const result = getSortResult(sortType, startNumbers);
+    let currentResult = result.find(r => r.step === step);
+    return [currentResult.numbers, currentResult.log];
+}
+
+function getSortResult(sortType, startNumbers) {
+    let result;
+    switch (sortType) {
+        case "bubbleSort":
+            result = bubbleSortResult(startNumbers);
+            break;
+        case "insertionSort":
+            result = insertionSortResult(startNumbers);
+            break;
+        case "selectionSort":
+            result = selectionSortResult(startNumbers);
+            break;
+        case "quickSort":
+            result = quickSortResult(startNumbers);
+            break;
+        case "mergeSort":
+            result = mergeSortResult(startNumbers);
+            break;
+        case "heapSort":
+            result = heapSortResult(startNumbers);
+            break;
+    }
+    return result;
 }

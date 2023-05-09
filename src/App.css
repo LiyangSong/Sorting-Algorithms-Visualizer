@@ -106,6 +106,7 @@ svg {
 }
 
 input {
+    font-size: 20px;
     text-align: center;
     width: 50px;
     height: 35px;
@@ -151,6 +152,10 @@ input {
     padding: 30px 80px 30px 80px;
     animation-name: fadeIn;
     animation-duration: 0.8s;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
 }
 
 .buttonArea {
@@ -158,6 +163,25 @@ input {
     gap: 20px;
     animation-name: fadeIn;
     animation-duration: 0.8s;
+}
+
+.buttonArea button {
+    border: 0;
+    background-color: transparent;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonArea img:hover {
+    filter: opacity(100%);
+}
+
+.buttonArea img {
+    filter: opacity(50%);
+    height: 22px;
+    width: 22px;
 }
 
 .square, .activeSquare, .sortedSquare {
@@ -170,11 +194,9 @@ input {
     width: 60px;
     height: 60px;
     border-radius: 10px;
-    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: left 0.8s ease-out;
 }
 
 .activeSquare {
