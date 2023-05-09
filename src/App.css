@@ -160,6 +160,25 @@ input {
     animation-duration: 0.8s;
 }
 
+.buttonArea button {
+    border: 0;
+    border-radius: 5px;
+    background-color: transparent;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonArea button:hover {
+    background-color: #EEEEEE;
+}
+
+.buttonArea img {
+    height: 20px;
+    width: 20px;
+}
+
 .square, .activeSquare, .sortedSquare {
     top: 30%;
     font-family: "Ubuntu", sans-serif;
