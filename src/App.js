@@ -1,9 +1,9 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes, Outlet, Navigate} from 'react-router-dom';
-import './App.css'
-import Header from './Header.js'
+import './App.css';
+import Header from './Header.js';
 import ContentProvider from "./ContentProvider.js";
-import Home from './Home.js'
+import Home from './Home.js';
 
 export default function App() {
     return (
