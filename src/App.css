@@ -33,9 +33,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 999;
 }
 
-.header_logoArea {
+.header-logoArea {
     flex: 0 0 350px;
     font-family: "Ubuntu Mono", sans-serif;
     font-size: 22px;
@@ -44,36 +45,65 @@
     justify-content: space-between;
 }
 
-.header_tabArea {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 5px;
-}
-
-.header_linkArea {
+.header-menu {
     flex: 0 0 50px;
-    gap: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
 }
 
-.header_linkArea:hover {
+.header-menu:hover {
     animation: jump 0.3s ease-in;
 }
 
+.header-gitlink {
+    flex: 0 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-gitlink:hover {
+    animation: jump 0.3s ease-in;
+}
+
+.tabs {
+    position: absolute;
+    right: 45px;
+    top: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .tab, .activeTab {
-    padding: 10px;
-    border-radius: 10px;
-    color: #222222;
+    text-align: center;
+    padding: 5px 10px;
+    border: 2px solid #222222;
+    border-radius: 30px;
     text-decoration: None;
+    background-color: #EEEEEE;
+    animation: slideIn 0.2s ease-in forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .tab:hover {
-    background-color: #EEEEEE;
+    background-color: #9cdcff;
 }
 
 .activeTab {
-    color: purple;
-    background-color: papayawhip;
+    background-color: #9cdcff;
 }
 
 .contentProvider, .home {
@@ -162,9 +192,9 @@
 .description {
     width: 100%;
     flex: 0 0 150px;
-    padding: 40px 150px;
+    padding: 40px 220px;
     font-family: "Ubuntu", sans-serif;
-    font-size: 25px;
+    font-size: 18px;
     color: #222222;
     text-align: center;
     display: flex;
@@ -252,7 +282,7 @@ input {
 
 .startSortingButton:hover {
     filter: drop-shadow(2px 2px 1px #555555);
-    transition: transform 0.15s ease-in;
+    transition: transform 0.1s ease-in;
     transform: scale(110%);
 }
 
