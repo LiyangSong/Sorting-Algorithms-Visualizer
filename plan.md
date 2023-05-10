@@ -16,13 +16,13 @@ Related algorithms: Selection Sort, Bubble Sort, Quick Sort, Merge Sort, Heap So
 
 ### Expected Features
 
-- Allow for user inputs of numbers:
+- Allow for user inputs of numbers (done)
   - Number digits can be 1, 2, or 3.
   - Number of numbers can be extended by users. Default 3 numbers.
 
-- Generate shapes containing user-input numbers:
+- Generate shapes containing user-input numbers (done)
   - Each shape should have activated state to show different style. 
   - Each shape should have x and y position to show their order in algorithms.
 
-- Animations to show the change of shape positions:
+- Animations to show the change of shape positions (done)
   - Buttons to control progress： next step, last step, autoplay, speed, etc.

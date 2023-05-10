@@ -1,12 +1,6 @@
 import { deepCopy } from "../utils.js";
 
-export default function bubbleSort(startNumbers, step) {
-    const result = bubbleSortResult(startNumbers);
-    const currentResult = result.find(r => r.step === step);
-    return [currentResult.numbers, currentResult.log];
-}
-
-function bubbleSortResult(startNumbers) {
+export default function bubbleSortResult(startNumbers) {
     let result = [{
         step: 0,
         numbers: startNumbers,

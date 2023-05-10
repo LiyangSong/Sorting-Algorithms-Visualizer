@@ -1,20 +1,20 @@
-import Square from './Square.js'
+import Square from './Square.js';
+import { Flipper } from "react-flip-toolkit";
 
 export default function AnimationArea({ currentNumbers }) {
-
     return(
-        <div className="animationArea">
-            {currentNumbers.map((number, index) => {
+        <Flipper
+            flipKey={currentNumbers.map((number) => number.id).join('')}
+            className="animationArea"
+        >
+            {currentNumbers.map((number) => {
                 return (
                     <Square
-                        key={number.id}
+                        flipId={number.id}
                         number={number}
-                        style={{
-                            left: (window.outerWidth - 80 - currentNumbers.length * 100) / 2 + index * 100
-                        }}
                     />
                 )
             })}
-        </div>
+        </Flipper>
     )
 }
