@@ -7,6 +7,12 @@ export default function InputArea({
     onAddLength,
     onReduceLength
 }) {
+    function handleKeyPress (e) {
+        if (e.key === "Enter") {
+            onStartSorting();
+        }
+    }
+
     return(
         <div className="inputArea">
             <div className="inputButtons">
@@ -21,6 +27,7 @@ export default function InputArea({
                             onChange={(e) => {
                                 onInputNumber(number.id, e.target.value)
                             }}
+                            onKeyDown={handleKeyPress}
                         />
                     ))}
                 </div>
