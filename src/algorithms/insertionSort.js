@@ -1,12 +1,6 @@
 import { deepCopy } from "../utils.js";
 
-export default function insertionSort(numbers, step) {
-    const result = insertionSortResult(startNumbers);
-    const currentResult = result.find(r => r.step === step);
-    return [currentResult.numbers, currentResult.log];
-}
-
-function insertionSortResult(startNumbers){
+export default function insertionSortResult(startNumbers){
     let result = [{
         step: 0,
         numbers: startNumbers,
