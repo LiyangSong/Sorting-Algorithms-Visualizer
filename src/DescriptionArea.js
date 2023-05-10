@@ -10,6 +10,7 @@ export default function DescriptionArea({ sortType }) {
 
     return(
         <div className="description">
+            <div className="title">{sortType.toUpperCase()}</div>
             {descriptions[sortType]}
         </div>
     )

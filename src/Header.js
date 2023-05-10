@@ -21,7 +21,7 @@ export default function Header() {
     return(
         <nav className="header">
             <LogoArea />
-            <TabArea />
+            <div className="spaceHolder" />
             <LinkArea />
         </nav>
     )
