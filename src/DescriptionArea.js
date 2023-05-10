@@ -4,7 +4,7 @@ export default function DescriptionArea({ sortType }) {
         "insertionSort": "Insertion sort is a sorting algorithm that places an unsorted element at its suitable place in each iteration.",
         "selectionSort": "Selection sort is a sorting algorithm that selects the smallest element from an unsorted list in each iteration and places that element at the beginning of the unsorted list.",
         "quickSort": "Quicksort is a sorting algorithm based on the divide and conquer approach where an array is divided into subarrays by selecting a pivot element.",
-        "mergeSort": "Merge Sort is based on Divide and Conquer Algorithm. A problem is divided into multiple sub-problems. Sub-problems are solved individually and combined to form the final solution.",
+        "mergeSort": "Merge Sort is based on Divide and Conquer. A problem is divided into multiple sub-problems that are solved individually and combined to form the final solution.",
         "heapSort": "Heap sort works by visualizing the elements of the array as a special kind of complete binary tree called a heap."
     }
 
