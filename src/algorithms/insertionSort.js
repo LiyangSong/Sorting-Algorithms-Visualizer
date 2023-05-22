@@ -8,14 +8,25 @@ export default function insertionSortResult(startNumbers){
     }];
     let currentStep = 0;
     let currentNumbers = deepCopy(startNumbers);
+    currentStep++;
+    currentNumbers[0].isSorted=true;
+    result.push({
+        step: currentStep,
+        numbers: deepCopy(currentNumbers),
+        log: `${currentNumbers[0].number} is in the sorted part.`,
+    });
 
-    for (let i = 1; i < arr.length; i++) {
+    for (let i = 1; i < currentNumbers.length; i++) {
         let key = deepCopy(currentNumbers[i]);
-        let j = i - 1;
-        while (j >= 0 && parseInt(currentNumbers[j].number) > parseInt(key.number)) {
+        let j = i;
+        currentNumbers[j].isActive = true;
+        while (j > 0 && parseInt(currentNumbers[j].number) < parseInt(currentNumbers[j-1].number)) {
             currentStep++;
-            currentNumbers[j + 1] = deepCopy(currentNumbers[j]);
-            currentNumbers[j + 1].isActive = true;
+            currentNumbers[j].isActive = true;
+            currentNumbers[j - 1].isActive = true;
+            let temp=deepCopy(currentNumbers[j]);
+            currentNumbers[j]=deepCopy(currentNumbers[j-1]);
+            currentNumbers[j-1]=temp;
             j--;
             result.push({
                 step: currentStep,
@@ -23,12 +34,12 @@ export default function insertionSortResult(startNumbers){
                 log: `Move ${key.number} to the left.`,
             });
         }
-        currentNumbers[j + 1] = deepCopy(key);
-        currentNumbers[i].isSorted = true;
+        currentStep++;
+        currentNumbers[j].isSorted=true;
         result.push({
             step: currentStep,
             numbers: deepCopy(currentNumbers),
-            log: `${key.number} is set.`,
+            log: `${key.number} is in the sorted part.`,
         });
         for (let n = 0; n < currentNumbers.length; n++) {
             currentNumbers[n].isActive = false;
