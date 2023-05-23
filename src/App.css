@@ -353,46 +353,6 @@ input {
     background-color: #78ffa9;
 }
 
-/* 
-    for example:
-    when swapping list[idx] and list[idx + 1]
-    use js to add "animation: swapping1 0.5s ease-in-out forwards;" 
-        to .square:nth-child(idx)
-    and use js to add "animation: swapping2 0.5s ease-in-out forwards;"
-        to .square:nth-child(idx + 1)
-*/
-/* ---start--- */
-/* below two css are templates for swapping */
-
-/* step 1: swap two div in sorting algo
-step 2: add css to the div */
-
-@keyframes swapping1 {
-  0% {
-    transform: none;
-  }
-  50% {
-    transform: translateX(60px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-@keyframes swapping2 {
-  0% {
-    transform: none;
-  }
-  50% {
-    transform: translateX(-60px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-/* ---end--- */
-
 .footer {
     flex: 0 0 50px;
     font-size: 12px;
