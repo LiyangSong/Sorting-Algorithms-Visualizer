@@ -1,4 +1,4 @@
-import { deepCopy } from "../utils.js";
+import { deepCopy, swap } from "../utils.js";
 
 export default function insertionSortResult(startNumbers){
     let result = [{
@@ -24,9 +24,7 @@ export default function insertionSortResult(startNumbers){
             currentStep++;
             currentNumbers[j].isActive = true;
             currentNumbers[j - 1].isActive = true;
-            let temp=deepCopy(currentNumbers[j]);
-            currentNumbers[j]=deepCopy(currentNumbers[j-1]);
-            currentNumbers[j-1]=temp;
+            swap(currentNumbers, j, j - 1);
             j--;
             result.push({
                 step: currentStep,
