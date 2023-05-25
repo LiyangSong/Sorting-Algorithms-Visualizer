@@ -1,4 +1,4 @@
-import { deepCopy } from "../utils.js";
+import { deepCopy, swap } from "../utils.js";
 
 export default function bubbleSortResult(startNumbers) {
     let result = [{
@@ -11,20 +11,17 @@ export default function bubbleSortResult(startNumbers) {
 
     for (let i = currentNumbers.length; i > 1; i--) {
         for (let j = 0; j < i - 1; j++) {
-
             currentStep++;
             currentNumbers[j].isActive = true;
             currentNumbers[j + 1].isActive = true;
 
-            let temp = deepCopy(currentNumbers[j]);
             let log;
 
             if (parseInt(currentNumbers[j].number) <= parseInt(currentNumbers[j + 1].number)) {
                 log = `${currentNumbers[j].number} <= ${currentNumbers[j + 1].number}, no swap.`
             } else {
                 log = `Swap ${currentNumbers[j].number} and ${currentNumbers[j + 1].number}.`;
-                currentNumbers[j] = deepCopy(currentNumbers[j + 1]);
-                currentNumbers[j + 1] = temp;
+                swap(currentNumbers, j, j + 1);
             }
 
             if (j === i - 2) {
