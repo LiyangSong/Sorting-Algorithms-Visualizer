@@ -32,20 +32,17 @@ export default function quickSortResult(startNumbers) {
         let pivotIndex = partition(array, lowIndex, highIndex);
         quickSort(array, lowIndex, pivotIndex - 1);
         quickSort(array, pivotIndex + 1, highIndex);
-
     }
 
     function partition(array, lowIndex, highIndex) {
         let pivotIndex = highIndex;
-        array[pivotIndex].isPointed = true;
-
         let tempIndex = lowIndex;
+        array[pivotIndex].isPointed = true;
         array[tempIndex].isPointed = true;
 
         currentStep++;
         let log = `Pivot: ${array[pivotIndex].number}.
             Temporary pivot: ${array[tempIndex].number}.`;
-
         result.push({
             step: currentStep,
             numbers: deepCopy(array),
