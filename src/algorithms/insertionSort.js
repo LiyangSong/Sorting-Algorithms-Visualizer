@@ -46,7 +46,7 @@ export default function insertionSortResult(startNumbers){
     result.push({
         step: currentStep + 1,
         numbers: deepCopy(currentNumbers),
-        log: "All set. Sorting completed."
+        log: "All set.\nSorting completed."
     });
     return result;
 }
