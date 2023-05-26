@@ -261,7 +261,7 @@
     justify-content: space-between;
 }
 
-input {
+.inputs input {
     font-size: 20px;
     text-align: center;
     width: 50px;
@@ -314,6 +314,8 @@ input {
 .buttonArea {
     flex: 0 0 120px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: 25px;
 }
 
@@ -332,6 +334,35 @@ input {
     filter: opacity(50%);
     height: 22px;
     width: 22px;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 150px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background: #EEEEEE;
+    height: 10px;
+    border-radius: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -3px;
+    background-color: #222222;
+    height: 15px;
+    width: 15px;
+    border-radius: 10px;
+    filter: opacity(50%);
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+    filter: opacity(100%);
 }
 
 .squareArea {
