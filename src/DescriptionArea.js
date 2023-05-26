@@ -8,10 +8,21 @@ export default function DescriptionArea({ sortType }) {
         "heapSort": "Heap sort works by visualizing the elements of the array as a special kind of complete binary tree called a heap."
     }
 
+    const complexity={
+        "bubbleSort": "Time Complexity:O(n²)       Space Complexity:O(1)",
+        "insertionSort": "Time Complexity:O(n²)       Space Complexity:O(1)",
+        "selectionSort": "Time Complexity:O(n²)       Space Complexity:O(1)",
+        "quickSort": "Time Complexity:O(nlog(n))       Space Complexity:O(log(n))",
+        "mergeSort": "Time Complexity:O(nlog(n))       Space Complexity:O(n)",
+        "heapSort": "Time Complexity:O(nlog(n))       Space Complexity:O(1)",
+
+    }
+
     return(
         <div className="description">
             <div className="title">{sortType.toUpperCase()}</div>
-            {descriptions[sortType]}
+            <div className="description-text">{descriptions[sortType]}</div>
+            <div className="complexity-text">{complexity[sortType]}</div>
         </div>
     )
 }
