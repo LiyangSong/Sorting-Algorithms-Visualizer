@@ -18,15 +18,17 @@ export default function bubbleSortResult(startNumbers) {
             let log;
 
             if (parseInt(currentNumbers[j].number) <= parseInt(currentNumbers[j + 1].number)) {
-                log = `${currentNumbers[j].number} <= ${currentNumbers[j + 1].number}, no swap.`
+                log = `${currentNumbers[j].number} <= ${currentNumbers[j + 1].number}.
+                    No swap.`
             } else {
-                log = `Swap ${currentNumbers[j].number} and ${currentNumbers[j + 1].number}.`;
+                log = `${currentNumbers[j].number} > ${currentNumbers[j + 1].number}.
+                    Swap ${currentNumbers[j].number} and ${currentNumbers[j + 1].number}.`;
                 swap(currentNumbers, j, j + 1);
             }
 
             if (j === i - 2) {
                 currentNumbers[j + 1].isSorted = true;
-                log += ` ${currentNumbers[j + 1].number} is set.`
+                log += `\n${currentNumbers[j + 1].number} is set.`
                 if (i === 2) {
                     currentNumbers[j].isSorted = true;
                     log += ` ${currentNumbers[j].number} is set.`
