@@ -7,11 +7,11 @@ import heapSortResult from './algorithms/heapSort.js';
 import { deepCopy } from "./utils.js";
 
 const initialNumbers = [
-    {id: 1, number: null, isActive: false, isSorted: false},
-    {id: 2, number: null, isActive: false, isSorted: false},
-    {id: 3, number: null, isActive: false, isSorted: false},
-    {id: 4, number: null, isActive: false, isSorted: false},
-    {id: 5, number: null, isActive: false, isSorted: false}
+    {id: 1, number: null, isActive: false, isSorted: false, isPointed: false},
+    {id: 2, number: null, isActive: false, isSorted: false, isPointed: false},
+    {id: 3, number: null, isActive: false, isSorted: false, isPointed: false},
+    {id: 4, number: null, isActive: false, isSorted: false, isPointed: false},
+    {id: 5, number: null, isActive: false, isSorted: false, isPointed: false}
 ]
 
 export const initialState = {
@@ -48,7 +48,8 @@ export default function reducer(state, action) {
                     id: action.id,
                     number: action.inputNumber,
                     isActive: false,
-                    isSorted: false
+                    isSorted: false,
+                    isPointed: false
                 } : {...number};
             });
 
@@ -64,7 +65,8 @@ export default function reducer(state, action) {
                     id: state.currentNumbers.length + 1,
                     number: null,
                     isActive: false,
-                    isSorted: false
+                    isSorted: false,
+                    isPointed: false
                 }
             ] : [...state.currentNumbers];
 
@@ -184,7 +186,7 @@ export default function reducer(state, action) {
 
 function runSort(sortType, startNumbers, step) {
     const result = getSortResult(sortType, startNumbers);
-    let currentResult = result.find(r => r.step === step);
+    const currentResult = result.find(r => r.step === step);
     return [currentResult.numbers, currentResult.log];
 }
 

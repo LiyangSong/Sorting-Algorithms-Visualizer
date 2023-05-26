@@ -1,4 +1,4 @@
-import { deepCopy } from "../utils.js";
+import { deepCopy, swap } from "../utils.js";
 
 export default function selectionSortResult(startNumbers) {
     let result = [{
@@ -41,9 +41,7 @@ export default function selectionSortResult(startNumbers) {
     
         if (minIndex !== i) {
           // Swap values
-          let temp = deepCopy(currentNumbers[i]);
-          currentNumbers[i] = deepCopy(currentNumbers[minIndex]);
-          currentNumbers[minIndex] = temp;
+          swap(currentNumbers, i, minIndex);
           currentStep++;
           result.push({
             step: currentStep,
@@ -69,7 +67,7 @@ export default function selectionSortResult(startNumbers) {
     result.push({
         step: currentStep + 1,
         numbers: deepCopy(currentNumbers),
-        log: "All set. Sorting completed."
+        log: "All set.\nSorting completed."
     });
 
     return result;

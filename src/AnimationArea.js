@@ -11,6 +11,7 @@ export default function AnimationArea({ currentNumbers }) {
                 return (
                     <Square
                         flipId={number.id}
+                        key={number.id}
                         number={number}
                     />
                 )
