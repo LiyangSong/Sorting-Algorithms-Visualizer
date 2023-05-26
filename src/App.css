@@ -291,8 +291,10 @@ input {
     font-size: 22px;
     color: #555555;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 5px;
     text-align: center;
     animation-name: fadeIn;
     animation-duration: 0.8s;
@@ -304,7 +306,7 @@ input {
     animation-duration: 0.8s;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     gap: 35px;
 }
 
@@ -332,6 +334,14 @@ input {
     width: 22px;
 }
 
+.squareArea {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
 .square, .activeSquare, .sortedSquare {
     font-family: "Ubuntu Mono", sans-serif;
     font-size: 44px;
@@ -351,6 +361,10 @@ input {
 
 .sortedSquare {
     background-color: #78ffa9;
+}
+
+.pointer {
+    animation: jump 0.5s ease-in infinite;
 }
 
 .footer {
