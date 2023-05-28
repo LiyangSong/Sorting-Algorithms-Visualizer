@@ -64,7 +64,7 @@ export default function ButtonArea({
                     onSpeedChange(e.target.value)
                 }}
             />
-            <div>{ ( 1000 / speed ).toFixed(1) }x</div>
+            <div>{(1000 / speed).toFixed(1)}x</div>
         </div>
     )
 }
