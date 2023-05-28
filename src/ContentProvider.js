@@ -101,7 +101,7 @@ export default function ContentProvider({ sortType }) {
     }
 
     function handleSpeedChange(value) {
-        setSpeed(1000 * value);
+        setSpeed(1000 / value);
     }
 
     return(

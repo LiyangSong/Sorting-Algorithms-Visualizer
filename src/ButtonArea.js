@@ -57,13 +57,14 @@ export default function ButtonArea({
                 type="range"
                 id="speed"
                 min="0.1"
-                max="3"
+                max="5"
                 step="0.1"
+                value={1000 / speed}
                 onChange={(e) => {
                     onSpeedChange(e.target.value)
                 }}
             />
-            <div>{speed}</div>
+            <div>{ ( 1000 / speed ).toFixed(1) }x</div>
         </div>
     )
 }
