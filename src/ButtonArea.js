@@ -13,7 +13,9 @@ export default function ButtonArea({
     onJumpToComplete,
     disableForward,
     disableBackward,
-    isAutoRunning
+    isAutoRunning,
+    onSpeedChange,
+    speed
 }) {
     return(
         <div className="buttonArea">
@@ -51,6 +53,18 @@ export default function ButtonArea({
             >
                 <img src={jumpToComplete} alt="Jump To Complete" />
             </button>
+            <input
+                type="range"
+                id="speed"
+                min="0.1"
+                max="5"
+                step="0.1"
+                value={1000 / speed}
+                onChange={(e) => {
+                    onSpeedChange(e.target.value)
+                }}
+            />
+            <div>{(1000 / speed).toFixed(1)}x</div>
         </div>
     )
 }

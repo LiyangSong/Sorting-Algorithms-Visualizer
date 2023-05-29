@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef } from 'react';
+import { useState, useEffect, useReducer, useRef } from 'react';
 import { useLocation } from "react-router-dom";
 import DescriptionArea from './DescriptionArea.js';
 import InputArea from './InputArea.js';
@@ -11,6 +11,7 @@ import reducer, { ACTION, initialState } from "./reducer.js";
 export default function ContentProvider({ sortType }) {
     const [state, dispatch] = useReducer(reducer, initialState);
     let intervalId = useRef(null);
+    const [speed, setSpeed] = useState(1000);
 
     useEffect(() => {
         dispatch({
@@ -22,12 +23,23 @@ export default function ContentProvider({ sortType }) {
         if (state.status === "auto running") {
             intervalId.current = setInterval(() => {
                 handleStepForward();
-            }, 1000);
+            }, speed);
         }
         if (state.status === "complete" || state.status === "pause") {
             clearInterval(intervalId.current);
         }
     }, [state.status])
+
+    useEffect(() => {
+        if (intervalId.current) {
+            clearInterval(intervalId.current);
+        }
+        if (state.status === "auto running") {
+            intervalId.current = setInterval(() => {
+                handleStepForward();
+            }, speed);
+        }
+    }, [speed])
 
     function handleInputNumber(id, inputNumber) {
         dispatch({
@@ -88,6 +100,10 @@ export default function ContentProvider({ sortType }) {
         })
     }
 
+    function handleSpeedChange(value) {
+        setSpeed(1000 / value);
+    }
+
     return(
         <div className="contentProvider">
             {state.status === "input" ? (
@@ -116,6 +132,8 @@ export default function ContentProvider({ sortType }) {
                         disableForward={state.status === "auto running" || state.status === "complete"}
                         disableBackward={state.status === "auto running" || state.status === "ready to run"}
                         isAutoRunning={state.status === "auto running"}
+                        onSpeedChange={handleSpeedChange}
+                        speed={speed}
                     />
                     <Footer />
                 </>
