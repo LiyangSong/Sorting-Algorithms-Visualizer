@@ -7,10 +7,10 @@ export default function Square({ number, flipId }) {
             flipId={flipId}
         >
             <div className="squareArea">
-                <div className={number.isActive ? "activeSquare" : number.isSorted ? "sortedSquare" : "square"}>
+                <div className={`square ${number.isActive ? "active" : number.isSorted ? "sorted" : ""} ${number.isSeperated ? "seperated" : ""}`}>
                     {number.number}
                 </div>
-                <div className="pointer">
+                <div className={`pointer ${number.isSeperated ? "seperated" : ""}`}>
                     {number.isPointed &&
                         <img src={pointerIcon} alt="Pointer Icon" height="28px" />}
                 </div>
