@@ -135,11 +135,10 @@ export default function mergeSortResult(startNumbers) {
             array[lowIndex + m] = deepCopy(mergedArray[m]);
         }
 
-        if (highIndex !== array.length - 1) {
-            array[highIndex].isSeperated = true;
+        for (let n = lowIndex; n < highIndex; n++) {
+            array[n].isSeperated = false;
         }
-
-        array[midIndex].isSeperated = false;
+        array[highIndex].isSeperated = true;
 
         result.push({
             step: currentStep,
