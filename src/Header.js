@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { NavLink } from 'react-router-dom';
 import logo from './assets/sort.png';
 import githubLogo from './assets/github-mark.png';
@@ -21,6 +21,22 @@ export const tabs = [
 
 export default function Header() {
     const [dropDown, setDropDown] = useState(false);
+    let tabsRef = useRef();
+
+    useEffect(() => {
+        const handler = (e) => {
+            if (dropDown && tabsRef.current && !tabsRef.current.contains(e.target)) {
+                setDropDown(false);
+            }
+        };
+        document.addEventListener("mousedown", handler);
+        document.addEventListener("touchstart", handler);
+        return () => {
+            document.removeEventListener("mousedown", handler);
+            document.removeEventListener("touchstart", handler);
+        };
+    }, [dropDown])
+
     function handleDropDown() {
         setDropDown(prev => !prev);
     }
@@ -33,9 +49,13 @@ export default function Header() {
         <nav className="header">
             <LogoArea />
             <div className="spaceHolder" />
-            <TabMenu onDropDown={handleDropDown}/>
+            <div className="header-tabsArea" ref={tabsRef}>
+                <TabMenu onDropDown={handleDropDown}/>
+                {dropDown && <Tabs onOpenTab={closeDropDown}/>}
+            </div>
+
             <GitLink />
-            {dropDown && <Tabs onOpenTab={closeDropDown}/>}
+
         </nav>
     )
 }
@@ -53,19 +73,11 @@ function LogoArea() {
 function TabMenu({ onDropDown }) {
     return(
         <button
-            className="header-menu"
+            className="menu"
             onClick={onDropDown}
         >
             <img src={menuIcon} alt="Tab Menu" height="25px"/>
         </button>
-    )
-}
-
-function GitLink() {
-    return(
-        <a href="https://github.com/LiyangSong/Sorting-Algorithms-Visualizer" target="_blank" className="header-gitlink">
-            <img src={githubLogo} alt="Github Logo" height="30px"/>
-        </a>
     )
 }
 
@@ -85,6 +97,14 @@ function Tabs({ onOpenTab }) {
                 </NavLink>
             ))}
         </div>
+    )
+}
+
+function GitLink() {
+    return(
+        <a href="https://github.com/LiyangSong/Sorting-Algorithms-Visualizer" target="_blank" className="header-gitlink">
+            <img src={githubLogo} alt="Github Logo" height="30px"/>
+        </a>
     )
 }
 

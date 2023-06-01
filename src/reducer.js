@@ -7,11 +7,11 @@ import heapSortResult from './algorithms/heapSort.js';
 import { deepCopy } from "./utils.js";
 
 const initialNumbers = [
-    {id: 1, number: null, isActive: false, isSorted: false, isPointed: false},
-    {id: 2, number: null, isActive: false, isSorted: false, isPointed: false},
-    {id: 3, number: null, isActive: false, isSorted: false, isPointed: false},
-    {id: 4, number: null, isActive: false, isSorted: false, isPointed: false},
-    {id: 5, number: null, isActive: false, isSorted: false, isPointed: false}
+    {id: 1, number: null, isActive: false, isSorted: false, isPointed: false, isSeperated: false},
+    {id: 2, number: null, isActive: false, isSorted: false, isPointed: false, isSeperated: false},
+    {id: 3, number: null, isActive: false, isSorted: false, isPointed: false, isSeperated: false},
+    {id: 4, number: null, isActive: false, isSorted: false, isPointed: false, isSeperated: false},
+    {id: 5, number: null, isActive: false, isSorted: false, isPointed: false, isSeperated: false}
 ]
 
 export const initialState = {
@@ -49,7 +49,8 @@ export default function reducer(state, action) {
                     number: action.inputNumber,
                     isActive: false,
                     isSorted: false,
-                    isPointed: false
+                    isPointed: false,
+                    isSeperated: false
                 } : {...number};
             });
 
@@ -66,7 +67,8 @@ export default function reducer(state, action) {
                     number: null,
                     isActive: false,
                     isSorted: false,
-                    isPointed: false
+                    isPointed: false,
+                    isSeperated: false
                 }
             ] : [...state.currentNumbers];
 

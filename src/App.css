@@ -45,26 +45,18 @@
     justify-content: space-between;
 }
 
-.header-menu {
+.header-tabsArea {
     flex: 0 0 50px;
+}
+
+.menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
 }
 
-.header-menu:hover {
-    animation: jump 0.3s ease-in;
-}
-
-.header-gitlink {
-    flex: 0 0 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.header-gitlink:hover {
+.menu:hover {
     animation: jump 0.3s ease-in;
 }
 
@@ -104,6 +96,17 @@
 
 .activeTab {
     background-color: #9cdcff;
+}
+
+.header-gitlink {
+    flex: 0 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-gitlink:hover {
+    animation: jump 0.3s ease-in;
 }
 
 .contentProvider, .home {
@@ -373,7 +376,7 @@ input[type="range"]:hover::-webkit-slider-thumb {
     gap: 20px;
 }
 
-.square, .activeSquare, .sortedSquare {
+.square {
     font-family: "Ubuntu Mono", sans-serif;
     font-size: 44px;
     background-color: #EEEEEE;
@@ -384,14 +387,19 @@ input[type="range"]:hover::-webkit-slider-thumb {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: margin-right 0.2s ease-in;
 }
 
-.activeSquare {
+.active {
     background-color: #ff8eb3;
 }
 
-.sortedSquare {
+.sorted {
     background-color: #78ffa9;
+}
+
+.seperated {
+    margin-right: 30px;
 }
 
 .pointer {
