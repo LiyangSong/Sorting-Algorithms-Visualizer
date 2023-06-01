@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { NavLink } from 'react-router-dom';
 import logo from './assets/sort.png';
 import githubLogo from './assets/github-mark.png';
@@ -21,6 +21,22 @@ export const tabs = [
 
 export default function Header() {
     const [dropDown, setDropDown] = useState(false);
+    let tabsRef = useRef();
+
+    useEffect(() => {
+        const handler = (e) => {
+            if (dropDown && tabsRef.current && !tabsRef.current.contains(e.target)) {
+                setDropDown(false);
+            }
+        };
+        document.addEventListener("mousedown", handler);
+        document.addEventListener("touchstart", handler);
+        return () => {
+            document.removeEventListener("mousedown", handler);
+            document.removeEventListener("touchstart", handler);
+        };
+    }, [dropDown])
+
     function handleDropDown() {
         setDropDown(prev => !prev);
     }
@@ -35,7 +51,7 @@ export default function Header() {
             <div className="spaceHolder" />
             <TabMenu onDropDown={handleDropDown}/>
             <GitLink />
-            {dropDown && <Tabs onOpenTab={closeDropDown}/>}
+            {dropDown && <Tabs onOpenTab={closeDropDown} tabsRef={tabsRef}/>}
         </nav>
     )
 }
@@ -69,9 +85,9 @@ function GitLink() {
     )
 }
 
-function Tabs({ onOpenTab }) {
+function Tabs({ onOpenTab, tabsRef }) {
     return (
-        <div className="tabs">
+        <div className="tabs" ref={tabsRef}>
             {tabs.map((tab) => (
                 <NavLink
                     key={tab.label}
