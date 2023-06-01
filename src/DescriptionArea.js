@@ -1,3 +1,6 @@
+import clock from './assets/clock.png'
+import complexitypic from './assets/complexity.png'
+
 export default function DescriptionArea({ sortType }) {
     const descriptions = {
         "bubbleSort": "Bubble sort is a sorting algorithm that compares two adjacent elements and swaps them until they are in the intended order.",
@@ -9,20 +12,24 @@ export default function DescriptionArea({ sortType }) {
     }
 
     const complexity={
-        "bubbleSort": "Time Complexity:O(n²)       Space Complexity:O(1)",
-        "insertionSort": "Time Complexity:O(n²)       Space Complexity:O(1)",
-        "selectionSort": "Time Complexity:O(n²)       Space Complexity:O(1)",
-        "quickSort": "Time Complexity:O(nlog(n))       Space Complexity:O(log(n))",
-        "mergeSort": "Time Complexity:O(nlog(n))       Space Complexity:O(n)",
-        "heapSort": "Time Complexity:O(nlog(n))       Space Complexity:O(1)",
-
+        "bubbleSort": {t:"O(n²)",s:"O(1)"},
+        "insertionSort":{t:"O(n²)",s:"O(1)"},
+        "selectionSort":{t:"O(n²)",s:"O(1)"},
+        "quickSort":{t:"O(nlog(n))",s:"O(log(n))"},
+        "mergeSort":{t:"O(nlog(n))",s:"O(n)"},
+        "heapSort":{t:"O(nlog(n))",s:"O(1)"},
     }
 
     return(
         <div className="description">
             <div className="title">{sortType.toUpperCase()}</div>
             <div className="description-text">{descriptions[sortType]}</div>
-            <div className="complexity-text">{complexity[sortType]}</div>
+            <div className="complexity-text">
+                <img src={clock} height="25px" width="25px"/>
+                <span>&nbsp;{complexity[sortType].t}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <img src={complexitypic} height="25px" width="25px"/>
+                <span>&nbsp;{complexity[sortType].s}</span>
+            </div>
         </div>
     )
 }
