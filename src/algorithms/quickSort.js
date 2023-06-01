@@ -13,7 +13,6 @@ export default function quickSortResult(startNumbers) {
 
     for (let n = 0; n < currentNumbers.length; n++) {
         currentNumbers[n].isSorted = true;
-
     }
 
     result.push({
