@@ -45,26 +45,18 @@
     justify-content: space-between;
 }
 
-.header-menu {
+.header-tabsArea {
     flex: 0 0 50px;
+}
+
+.menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
 }
 
-.header-menu:hover {
-    animation: jump 0.3s ease-in;
-}
-
-.header-gitlink {
-    flex: 0 0 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.header-gitlink:hover {
+.menu:hover {
     animation: jump 0.3s ease-in;
 }
 
@@ -104,6 +96,17 @@
 
 .activeTab {
     background-color: #9cdcff;
+}
+
+.header-gitlink {
+    flex: 0 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-gitlink:hover {
+    animation: jump 0.3s ease-in;
 }
 
 .contentProvider, .home {

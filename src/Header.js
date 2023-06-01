@@ -49,9 +49,13 @@ export default function Header() {
         <nav className="header">
             <LogoArea />
             <div className="spaceHolder" />
-            <TabMenu onDropDown={handleDropDown}/>
+            <div className="header-tabsArea" ref={tabsRef}>
+                <TabMenu onDropDown={handleDropDown}/>
+                {dropDown && <Tabs onOpenTab={closeDropDown}/>}
+            </div>
+
             <GitLink />
-            {dropDown && <Tabs onOpenTab={closeDropDown} tabsRef={tabsRef}/>}
+
         </nav>
     )
 }
@@ -69,7 +73,7 @@ function LogoArea() {
 function TabMenu({ onDropDown }) {
     return(
         <button
-            className="header-menu"
+            className="menu"
             onClick={onDropDown}
         >
             <img src={menuIcon} alt="Tab Menu" height="25px"/>
@@ -77,17 +81,9 @@ function TabMenu({ onDropDown }) {
     )
 }
 
-function GitLink() {
-    return(
-        <a href="https://github.com/LiyangSong/Sorting-Algorithms-Visualizer" target="_blank" className="header-gitlink">
-            <img src={githubLogo} alt="Github Logo" height="30px"/>
-        </a>
-    )
-}
-
-function Tabs({ onOpenTab, tabsRef }) {
+function Tabs({ onOpenTab }) {
     return (
-        <div className="tabs" ref={tabsRef}>
+        <div className="tabs">
             {tabs.map((tab) => (
                 <NavLink
                     key={tab.label}
@@ -101,6 +97,14 @@ function Tabs({ onOpenTab, tabsRef }) {
                 </NavLink>
             ))}
         </div>
+    )
+}
+
+function GitLink() {
+    return(
+        <a href="https://github.com/LiyangSong/Sorting-Algorithms-Visualizer" target="_blank" className="header-gitlink">
+            <img src={githubLogo} alt="Github Logo" height="30px"/>
+        </a>
     )
 }
 
