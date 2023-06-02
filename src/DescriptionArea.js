@@ -25,11 +25,11 @@ export default function DescriptionArea({ sortType }) {
             <div className="title">{sortType.toUpperCase()}</div>
             <div className="description-text">{descriptions[sortType]}</div>
             <div className="complexity">
-                <div className="complexity-time">
+                <div className="complexity-time" title="Time Complexity">
                     <img src={time} alt="Time Complexity Icon" height="25px" width="25px"/>
                     &Omicron;({complexity[sortType].t})
                 </div>
-                <div className="complexity-space">
+                <div className="complexity-space" title="Space Complexity">
                     <img src={drive} alt="Space Complexity Icon" height="25px" width="25px"/>
                     &Omicron;({complexity[sortType].s})
                 </div>

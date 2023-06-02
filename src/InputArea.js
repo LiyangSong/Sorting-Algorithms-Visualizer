@@ -16,7 +16,11 @@ export default function InputArea({
     return(
         <div className="inputArea">
             <div className="inputButtons">
-                <button onClick={onReduceLength} className="reduceButton">
+                <button
+                    className="reduceButton"
+                    onClick={onReduceLength}
+                    title="Reduce Numbers"
+                >
                     <img src={reduceIcon} alt="Reduce Length Icon" height="30px" />
                 </button>
                 <div className="spaceHolder" />
@@ -32,11 +36,20 @@ export default function InputArea({
                     ))}
                 </div>
                 <div className="spaceHolder" />
-                <button onClick={onAddLength} className="addButton">
+                <button
+                    className="addButton"
+                    onClick={onAddLength}
+                    title="Add Numbers"
+                >
                     <img src={addIcon} alt="Add Length Icon" height="30px" />
                 </button>
             </div>
-            <button onClick={onStartSorting} className="startSortingButton">Start Sorting</button>
+            <button
+                className="startSortingButton"
+                onClick={onStartSorting}
+            >
+                Start Sorting
+            </button>
         </div>
     )
 }
