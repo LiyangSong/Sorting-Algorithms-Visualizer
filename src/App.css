@@ -207,6 +207,21 @@
     gap: 10px;
 }
 
+.complexity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+.complexity-time, .complexity-space{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-style: italic;
+}
+
 .title {
     font-size: 30px;
     font-style: italic;
