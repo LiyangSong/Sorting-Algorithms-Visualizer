@@ -31,7 +31,7 @@ export default function bubbleSortResult(startNumbers) {
                 log += `\n${currentNumbers[j + 1].number} is set.`
                 if (i === 2) {
                     currentNumbers[j].isSorted = true;
-                    log += ` ${currentNumbers[j].number} is set.`
+                    log += `\n${currentNumbers[j].number} is set.`
                 }
             }
 

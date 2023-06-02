@@ -204,7 +204,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 15px;
 }
 
 .complexity {
@@ -305,7 +305,7 @@
 }
 
 .logArea {
-    flex: 0 0 100px;
+    flex: 0 0 120px;
     font-size: 22px;
     color: #555555;
     display: flex;

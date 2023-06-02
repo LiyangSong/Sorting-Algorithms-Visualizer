@@ -1,5 +1,5 @@
-import clock from './assets/clock.png'
-import complexitypic from './assets/complexity.png'
+import time from './assets/time.png'
+import drive from './assets/drive.png'
 
 export default function DescriptionArea({ sortType }) {
     const descriptions = {
@@ -26,11 +26,11 @@ export default function DescriptionArea({ sortType }) {
             <div className="description-text">{descriptions[sortType]}</div>
             <div className="complexity">
                 <div className="complexity-time">
-                    <img src={clock} alt="Time Complexity Icon" height="25px" width="25px"/>
+                    <img src={time} alt="Time Complexity Icon" height="25px" width="25px"/>
                     &Omicron;({complexity[sortType].t})
                 </div>
                 <div className="complexity-space">
-                    <img src={complexitypic} alt="Space Complexity Icon" height="25px" width="25px"/>
+                    <img src={drive} alt="Space Complexity Icon" height="25px" width="25px"/>
                     &Omicron;({complexity[sortType].s})
                 </div>
             </div>
