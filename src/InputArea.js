@@ -5,7 +5,8 @@ export default function InputArea({
     onStartSorting,
     onInputNumber,
     onAddLength,
-    onReduceLength
+    onReduceLength,
+    sortType
 }) {
     function handleKeyPress (e) {
         if (e.key === "Enter") {
@@ -27,7 +28,9 @@ export default function InputArea({
                 <div className="inputs">
                     {currentNumbers.map(number => (
                         <input
-                            key={number.id}
+                            key={sortType + number.id}
+                            type="number"
+                            value={number.number}
                             onChange={(e) => {
                                 onInputNumber(number.id, e.target.value)
                             }}
