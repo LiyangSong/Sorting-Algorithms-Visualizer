@@ -115,7 +115,6 @@ export default function ContentProvider({ sortType }) {
                         onInputNumber={handleInputNumber}
                         onAddLength={handleAddLength}
                         onReduceLength={handleReduceLength}
-                        sortType={sortType}
                     />
                     <Footer />
                 </>
