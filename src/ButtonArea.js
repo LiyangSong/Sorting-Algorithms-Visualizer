@@ -23,6 +23,7 @@ export default function ButtonArea({
                 key="jumpToStart"
                 onClick={onJumpToStart}
                 disabled={disableBackward}
+                title="Jump to Start"
             >
                 <img src={jumpToStart} alt="Jump To Start" />
             </button>
@@ -30,19 +31,21 @@ export default function ButtonArea({
                 key="stepBackward"
                 onClick={onStepBackward}
                 disabled={disableBackward}
+                title="Step Backward"
             >
                 <img src={stepBackwardButton} alt="Step Backward" />
             </button>
             <button key="startPause" onClick={onAutoRun}>
                 {isAutoRunning?
-                    <img src={pauseButton} alt="Pause Auto Run" /> :
-                    <img src={startButton} alt="Start Auto Run" />
+                    <img src={pauseButton} alt="Pause Auto Run" title="Pause Auto Run" /> :
+                    <img src={startButton} alt="Start Auto Run" title="Start Auto Run" />
                 }
             </button>
             <button
                 key="stepForward"
                 onClick={onStepForward}
                 disabled={disableForward}
+                title="Step Forward"
             >
                 <img src={stepForwardButton} alt="Step Forward" />
             </button>
@@ -50,6 +53,7 @@ export default function ButtonArea({
                 key="jumpToComplete"
                 onClick={onJumpToComplete}
                 disabled={disableForward}
+                title="Jump to Complete"
             >
                 <img src={jumpToComplete} alt="Jump To Complete" />
             </button>
@@ -63,6 +67,7 @@ export default function ButtonArea({
                 onChange={(e) => {
                     onSpeedChange(e.target.value)
                 }}
+                title="Change Speed of Auto Run"
             />
             <div>{(1000 / speed).toFixed(1)}x</div>
         </div>

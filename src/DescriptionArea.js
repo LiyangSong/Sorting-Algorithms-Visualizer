@@ -1,5 +1,5 @@
-import clock from './assets/clock.png'
-import complexitypic from './assets/complexity.png'
+import time from './assets/time.png'
+import drive from './assets/drive.png'
 
 export default function DescriptionArea({ sortType }) {
     const descriptions = {
@@ -12,23 +12,27 @@ export default function DescriptionArea({ sortType }) {
     }
 
     const complexity={
-        "bubbleSort": {t:"O(n²)",s:"O(1)"},
-        "insertionSort":{t:"O(n²)",s:"O(1)"},
-        "selectionSort":{t:"O(n²)",s:"O(1)"},
-        "quickSort":{t:"O(nlog(n))",s:"O(log(n))"},
-        "mergeSort":{t:"O(nlog(n))",s:"O(n)"},
-        "heapSort":{t:"O(nlog(n))",s:"O(1)"},
+        "bubbleSort": {t: "n²", s: "1"},
+        "insertionSort":{t: "n²", s: "1"},
+        "selectionSort":{t: "n²",s: "1"},
+        "quickSort":{t: "nlog(n)", s: "log(n)"},
+        "mergeSort":{t: "nlog(n)", s: "n"},
+        "heapSort":{t: "nlog(n)", s: "1"},
     }
 
     return(
         <div className="description">
             <div className="title">{sortType.toUpperCase()}</div>
             <div className="description-text">{descriptions[sortType]}</div>
-            <div className="complexity-text">
-                <img src={clock} height="25px" width="25px"/>
-                <span>&nbsp;{complexity[sortType].t}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <img src={complexitypic} height="25px" width="25px"/>
-                <span>&nbsp;{complexity[sortType].s}</span>
+            <div className="complexity">
+                <div className="complexity-time" title="Time Complexity">
+                    <img src={time} alt="Time Complexity Icon" height="20px" width="20px"/>
+                    &Omicron;({complexity[sortType].t})
+                </div>
+                <div className="complexity-space" title="Space Complexity">
+                    <img src={drive} alt="Space Complexity Icon" height="20px" width="20px"/>
+                    &Omicron;({complexity[sortType].s})
+                </div>
             </div>
         </div>
     )

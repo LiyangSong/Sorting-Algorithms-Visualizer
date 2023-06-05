@@ -102,7 +102,12 @@ function Tabs({ onOpenTab }) {
 
 function GitLink() {
     return(
-        <a href="https://github.com/LiyangSong/Sorting-Algorithms-Visualizer" target="_blank" className="header-gitlink">
+        <a
+            className="header-gitlink"
+            href="https://github.com/LiyangSong/Sorting-Algorithms-Visualizer"
+            target="_blank"
+            title="Visit Our GitHub Page"
+        >
             <img src={githubLogo} alt="Github Logo" height="30px"/>
         </a>
     )

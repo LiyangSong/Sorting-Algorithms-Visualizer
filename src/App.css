@@ -204,7 +204,22 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    gap: 15px;
+}
+
+.complexity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+.complexity-time, .complexity-space{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: 10px;
+    font-style: italic;
 }
 
 .title {
@@ -273,6 +288,16 @@
     border-bottom: 2px solid #222222;
 }
 
+.inputs input::-webkit-outer-spin-button,
+.inputs input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.inputs input {
+    -moz-appearance: textfield;
+}
+
 .startSortingButton {
     font-size: 15px;
     font-weight: bold;
@@ -290,7 +315,7 @@
 }
 
 .logArea {
-    flex: 0 0 100px;
+    flex: 0 0 120px;
     font-size: 22px;
     color: #555555;
     display: flex;

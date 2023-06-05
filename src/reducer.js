@@ -7,11 +7,11 @@ import heapSortResult from './algorithms/heapSort.js';
 import { deepCopy } from "./utils.js";
 
 const initialNumbers = [
-    {id: 1, number: null, isActive: false, isSorted: false, isPointed: false, isSeperated: false},
-    {id: 2, number: null, isActive: false, isSorted: false, isPointed: false, isSeperated: false},
-    {id: 3, number: null, isActive: false, isSorted: false, isPointed: false, isSeperated: false},
-    {id: 4, number: null, isActive: false, isSorted: false, isPointed: false, isSeperated: false},
-    {id: 5, number: null, isActive: false, isSorted: false, isPointed: false, isSeperated: false}
+    {id: 1, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false},
+    {id: 2, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false},
+    {id: 3, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false},
+    {id: 4, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false},
+    {id: 5, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false}
 ]
 
 export const initialState = {
@@ -64,7 +64,7 @@ export default function reducer(state, action) {
             const currentNumbers = state.currentNumbers.length < 10 ? [
                 ...state.currentNumbers, {
                     id: state.currentNumbers.length + 1,
-                    number: null,
+                    number: "",
                     isActive: false,
                     isSorted: false,
                     isPointed: false,
@@ -90,7 +90,7 @@ export default function reducer(state, action) {
 
         case "startSorting": {
             const currentNumbers = state.currentNumbers.filter((number) =>
-                number.number !== null && !(isNaN(number.number))
+                number.number !== "" && !(isNaN(number.number))
             );
 
             return {
