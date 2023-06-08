@@ -160,8 +160,8 @@
 
 .nav:hover {
     filter: drop-shadow(2px 2px 1px #555555);
-    transition: transform 0.15s ease-in;
-    transform: scale(120%);
+    transition: transform 0.1s ease-in;
+    transform: scale(110%);
 }
 
 .nav img, .activeNav img {
