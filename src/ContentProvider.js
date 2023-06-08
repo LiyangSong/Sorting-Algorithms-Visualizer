@@ -10,7 +10,7 @@ import reducer, { ACTION, initialState } from "./reducer.js";
 
 export default function ContentProvider({ sortType }) {
     const [state, dispatch] = useReducer(reducer, initialState);
-    let intervalId = useRef(null);
+    let intervalRef = useRef(null);
     const [speed, setSpeed] = useState(1000);
 
     useEffect(() => {
@@ -21,21 +21,21 @@ export default function ContentProvider({ sortType }) {
 
     useEffect(() => {
         if (state.status === "auto running") {
-            intervalId.current = setInterval(() => {
+            intervalRef.current = setInterval(() => {
                 handleStepForward();
             }, speed);
         }
         if (state.status === "complete" || state.status === "pause") {
-            clearInterval(intervalId.current);
+            clearInterval(intervalRef.current);
         }
     }, [state.status])
 
     useEffect(() => {
-        if (intervalId.current) {
-            clearInterval(intervalId.current);
+        if (intervalRef.current) {
+            clearInterval(intervalRef.current);
         }
         if (state.status === "auto running") {
-            intervalId.current = setInterval(() => {
+            intervalRef.current = setInterval(() => {
                 handleStepForward();
             }, speed);
         }
@@ -122,7 +122,8 @@ export default function ContentProvider({ sortType }) {
                 <>
                     <LogArea log={state.log} />
                     <AnimationArea
-                        currentNumbers={state.currentNumbers} />
+                        currentNumbers={state.currentNumbers}
+                    />
                     <ButtonArea
                         onAutoRun={handleAutoRun}
                         onStepForward={handleStepForward}
