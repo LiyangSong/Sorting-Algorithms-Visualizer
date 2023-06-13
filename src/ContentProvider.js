@@ -68,9 +68,21 @@ export default function ContentProvider({ sortType }) {
                         handleAutoRun();
                         break;
                     }
-                case 32:// Spacebar
+                case 32: // Spacebar
                     handleAutoRun();
                     break;
+                case 38 : { // Up arrow key
+                    const speedRatio = 1000 / speed;
+                    let newSpeedRatio = speedRatio < 1 ? speedRatio + 0.1 : speedRatio < 4.5 ? speedRatio + 0.5 : 5;
+                    handleSpeedChange(newSpeedRatio);
+                    break;
+                }
+                case 40: { // Down arrow key
+                    const speedRatio = 1000 / speed;
+                    let newSpeedRatio = speedRatio > 1 ? speedRatio - 0.5 : speedRatio > 0.2 ? speedRatio - 0.1 : 0.1;
+                    handleSpeedChange(newSpeedRatio);
+                    break;
+                }
             }
         };
         document.addEventListener('keydown', handleKeyDown);
