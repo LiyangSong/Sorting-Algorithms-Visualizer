@@ -61,8 +61,13 @@ export default function ContentProvider({ sortType }) {
                     handleStepForward();
                     break;
                 case 13: // Enter key
-                    handleAutoRun();
-                    break;
+                    if (state.status === "input") {
+                        handleStartSorting();
+                        break;
+                    } else {
+                        handleAutoRun();
+                        break;
+                    }
                 case 32:// Spacebar
                     handleAutoRun();
                     break;
@@ -74,7 +79,7 @@ export default function ContentProvider({ sortType }) {
         return () => {
           document.removeEventListener('keydown', handleKeyDown);
         };
-      }, []);
+      });
 
     function handleInputNumber(id, inputNumber) {
         dispatch({
