@@ -7,11 +7,11 @@ import heapSortResult from './algorithms/heapSort.js';
 import { deepCopy } from "./utils.js";
 
 const initialNumbers = [
-    {id: 1, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false},
-    {id: 2, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false},
-    {id: 3, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false},
-    {id: 4, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false},
-    {id: 5, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false}
+    {id: 1, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false, isHeaped: false},
+    {id: 2, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false, isHeaped: false},
+    {id: 3, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false, isHeaped: false},
+    {id: 4, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false, isHeaped: false},
+    {id: 5, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false, isHeaped: false}
 ]
 
 export const initialState = {
@@ -50,7 +50,8 @@ export default function reducer(state, action) {
                     isActive: false,
                     isSorted: false,
                     isPointed: false,
-                    isSeperated: false
+                    isSeperated: false,
+                    isHeaped: false
                 } : {...number};
             });
 
@@ -68,7 +69,8 @@ export default function reducer(state, action) {
                     isActive: false,
                     isSorted: false,
                     isPointed: false,
-                    isSeperated: false
+                    isSeperated: false,
+                    isHeaped: false
                 }
             ] : [...state.currentNumbers];
 
