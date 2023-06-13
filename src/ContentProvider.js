@@ -41,6 +41,33 @@ export default function ContentProvider({ sortType }) {
         }
     }, [speed])
 
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+          // Check the key code and dispatch corresponding actions
+            switch (event.keyCode) {
+                case 37: // Left arrow key
+                    handleStepBackward();
+                    break;
+                case 39: // Right arrow key
+                    handleStepForward();
+                    break;
+                case 13: // Enter key
+                    handleAutoRun();
+                    break;
+                case 32:// Spacebar
+                    handleAutoRun();
+                    break;   
+            }
+        };
+        document.addEventListener('keydown', handleKeyDown);
+
+        // Clean up the event listener when the component unmounts
+        return () => {
+          document.removeEventListener('keydown', handleKeyDown);
+        };
+      }, []);
+      
+
     function handleInputNumber(id, inputNumber) {
         dispatch({
             type: ACTION.INPUTNUMBERS,
