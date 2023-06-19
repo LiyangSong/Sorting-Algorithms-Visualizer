@@ -438,6 +438,7 @@ input[type="range"]:hover::-webkit-slider-thumb {
     padding: 0;
     gap: 0;
     transform: scale(60%);
+    transform-origin: 0 0;
 }
 
 .treeChart {
