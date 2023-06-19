@@ -105,7 +105,9 @@ export default function reducer(state, action) {
 
         case "stepForward": {
             let newState = {...state};
-            if (state.currentNumbers.some((number) => number.isSorted === false) || state.currentNumbers.some((number) => number.isActive === true)) {
+            if (state.currentNumbers.some((number) => number.isSorted === false) ||
+                state.currentNumbers.some((number) => number.isActive === true) ||
+                state.currentNumbers.some((number) => number.isHeaped === true)) {
                 newState.step ++;
                 newState.status = state.status === "auto running" ? "auto running" : "manually running";
                 [newState.currentNumbers, newState.log] = runSort(action.sortType, newState.startNumbers, newState.step);

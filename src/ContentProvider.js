@@ -12,7 +12,6 @@ export default function ContentProvider({ sortType }) {
     const [state, dispatch] = useReducer(reducer, initialState);
     let intervalRef = useRef(null);
     const [speed, setSpeed] = useState(1000);
-    const [isHeaped, setIsHeaped] = useState(false);
 
     useEffect(() => {
         dispatch({
@@ -41,14 +40,6 @@ export default function ContentProvider({ sortType }) {
             }, speed);
         }
     }, [speed])
-
-    useEffect(() => {
-        if (state.currentNumbers.some((number) => number.isHeaped)) {
-            setIsHeaped(true);
-        } else {
-            setIsHeaped(false);
-        }
-    }, [state.currentNumbers])
 
     useEffect(() => {
         const handleKeyDown = (event) => {
@@ -175,7 +166,7 @@ export default function ContentProvider({ sortType }) {
                     <LogArea log={state.log} />
                     <AnimationArea
                         currentNumbers={state.currentNumbers}
-                        isHeaped={isHeaped}
+                        // isHeaped={isHeaped}
                     />
                     <ButtonArea
                         onAutoRun={handleAutoRun}

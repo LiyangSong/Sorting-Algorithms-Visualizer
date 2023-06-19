@@ -1,8 +1,8 @@
 import Square from './Square.js';
 import { Flipper } from "react-flip-toolkit";
 
-export default function AnimationArea({ currentNumbers, isHeaped }) {
-    console.log(currentNumbers);
+export default function AnimationArea({ currentNumbers }) {
+    const isHeaped = currentNumbers.some((number) => number.isHeaped);
     const treeDepth = [
         {depth: 0, numberIndex: [0]},
         {depth: 1, numberIndex: [1, 2]},
@@ -77,6 +77,7 @@ export default function AnimationArea({ currentNumbers, isHeaped }) {
                             flipId={number.id}
                             key={number.id}
                             number={number}
+                            index={-1}
                         />
                     )
                 })
