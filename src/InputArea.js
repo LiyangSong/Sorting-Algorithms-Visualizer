@@ -42,6 +42,7 @@ export default function InputArea({
             <button
                 className="startSortingButton"
                 onClick={onStartSorting}
+                title="Start Sorting (Enter)"
             >
                 Start Sorting
             </button>
