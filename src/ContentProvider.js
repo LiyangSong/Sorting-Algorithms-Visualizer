@@ -41,38 +41,69 @@ export default function ContentProvider({ sortType }) {
         }
     }, [speed])
 
+
     useEffect(() => {
-        const handleKeyDown = (event) => {
-          // Check the key code and dispatch corresponding actions
-            switch (event.keyCode) {
-                case 37: // Left arrow key
-                    handleStepBackward();
-                    break;
-                case 39: // Right arrow key
-                    handleStepForward();
-                    break;
-                case 13: // Enter key
-                    if (state.status === "input") {
-                        handleStartSorting();
-                        break;
-                    } else {
+        // Check the key code and dispatch corresponding actions
+        const handleKeyDown = (event)=> {
+            if (state.status === "input") {
+                event.keyCode === 13 && handleStartSorting();
+            }
+
+            if (state.status === "auto running") {
+                switch (event.keyCode) {
+                    case 13: // Enter key
                         handleAutoRun();
                         break;
+                    case 32: // Spacebar
+                        handleAutoRun();
+                        break;
+                    case 38: { // Up arrow key
+                        const speedRatio = 1000 / speed;
+                        let newSpeedRatio = speedRatio < 1 ? speedRatio + 0.1 : speedRatio < 4.5 ? speedRatio + 0.5 : 5;
+                        handleSpeedChange(newSpeedRatio);
+                        break;
                     }
-                case 32: // Spacebar
-                    handleAutoRun();
-                    break;
-                case 38 : { // Up arrow key
-                    const speedRatio = 1000 / speed;
-                    let newSpeedRatio = speedRatio < 1 ? speedRatio + 0.1 : speedRatio < 4.5 ? speedRatio + 0.5 : 5;
-                    handleSpeedChange(newSpeedRatio);
-                    break;
+                    case 40: { // Down arrow key
+                        const speedRatio = 1000 / speed;
+                        let newSpeedRatio = speedRatio > 1 ? speedRatio - 0.5 : speedRatio > 0.2 ? speedRatio - 0.1 : 0.1;
+                        handleSpeedChange(newSpeedRatio);
+                        break;
+                    }
                 }
-                case 40: { // Down arrow key
-                    const speedRatio = 1000 / speed;
-                    let newSpeedRatio = speedRatio > 1 ? speedRatio - 0.5 : speedRatio > 0.2 ? speedRatio - 0.1 : 0.1;
-                    handleSpeedChange(newSpeedRatio);
-                    break;
+            }
+
+            if (["ready to run", "manually running", "pause", "complete"].includes(state.status)) {
+                switch (event.keyCode) {
+                    case 13: // Enter key
+                        handleAutoRun();
+                        break;
+                    case 32: // Spacebar
+                        handleAutoRun();
+                        break;
+                    case 37: // Left arrow key
+                        handleStepBackward();
+                        break;
+                    case 38: { // Up arrow key
+                        const speedRatio = 1000 / speed;
+                        let newSpeedRatio = speedRatio < 1 ? speedRatio + 0.1 : speedRatio < 4.5 ? speedRatio + 0.5 : 5;
+                        handleSpeedChange(newSpeedRatio);
+                        break;
+                    }
+                    case 39: // Right arrow key
+                        handleStepForward();
+                        break;
+                    case 40: { // Down arrow key
+                        const speedRatio = 1000 / speed;
+                        let newSpeedRatio = speedRatio > 1 ? speedRatio - 0.5 : speedRatio > 0.2 ? speedRatio - 0.1 : 0.1;
+                        handleSpeedChange(newSpeedRatio);
+                        break;
+                    }
+                }
+                if (event.shiftKey && event.keyCode === 37) {
+                    handleJumpToStart();
+                }
+                if (event.shiftKey && event.keyCode === 39) {
+                    handleJumpToComplete();
                 }
             }
         };
@@ -80,9 +111,9 @@ export default function ContentProvider({ sortType }) {
 
         // Clean up the event listener when the component unmounts
         return () => {
-          document.removeEventListener('keydown', handleKeyDown);
+            document.removeEventListener('keydown', handleKeyDown);
         };
-      });
+    } )
 
     function handleInputNumber(id, inputNumber) {
         dispatch({
