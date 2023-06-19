@@ -87,7 +87,7 @@ export default function heapSortResult(startNumbers) {
         if (leftChildIndex < heapSize) {
             array[leftChildIndex].isActive = true;
             if (parseInt(array[leftChildIndex].number) > parseInt(array[largestIndex].number)) {
-                log = `${array[leftChildIndex].number} > ${array[largestIndex].number}.`
+                log = `${array[leftChildIndex].number} > ${array[rootIndex].number}.`
                 largestIndex = leftChildIndex;
             }
         }
@@ -95,7 +95,7 @@ export default function heapSortResult(startNumbers) {
         if (rightChildIndex < heapSize) {
             array[rightChildIndex].isActive = true;
             if (parseInt(array[rightChildIndex].number) > parseInt(array[largestIndex].number)) {
-                log = `${array[rightChildIndex].number} > ${array[largestIndex].number}.`
+                log = `${array[rightChildIndex].number} > ${array[rootIndex].number}.`
                 largestIndex = rightChildIndex;
             }
         }
