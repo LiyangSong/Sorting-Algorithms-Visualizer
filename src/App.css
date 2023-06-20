@@ -37,9 +37,10 @@
 }
 
 .header-logoArea {
-    flex: 0 0 350px;
+    flex: 0 0 380px;
     font-family: "Ubuntu Mono", sans-serif;
     font-size: 22px;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -160,8 +161,8 @@
 
 .nav:hover {
     filter: drop-shadow(2px 2px 1px #555555);
-    transition: transform 0.15s ease-in;
-    transform: scale(120%);
+    transition: transform 0.1s ease-in;
+    transform: scale(110%);
 }
 
 .nav img, .activeNav img {
@@ -329,18 +330,18 @@
 }
 
 .animationArea {
-    flex: 0 0 150px;
+    flex: 0 0 200px;
     animation-name: fadeIn;
     animation-duration: 0.8s;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    justify-content: center;
     gap: 35px;
 }
 
-
 .buttonArea {
-    flex: 0 0 120px;
+    flex: 0 0 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -394,11 +395,13 @@ input[type="range"]:hover::-webkit-slider-thumb {
 }
 
 .squareArea {
+    background-color: transparent;
     padding-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    z-index: 500;
 }
 
 .square {
@@ -412,7 +415,7 @@ input[type="range"]:hover::-webkit-slider-thumb {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: margin-right 0.2s ease-in;
+    transition: background-color 0.25s ease-in;
 }
 
 .active {
@@ -429,6 +432,87 @@ input[type="range"]:hover::-webkit-slider-thumb {
 
 .pointer {
     animation: jump 0.5s ease-in infinite;
+}
+
+.heaped {
+    padding: 0;
+    gap: 0;
+    transform: scale(60%);
+    transform-origin: 0 0;
+}
+
+.treeChart {
+    height: 200px;
+    width: 418px;
+    position: relative;
+}
+
+.treeGrid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.treeChart svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+}
+
+.treeChart line {
+    stroke: #222222;
+    stroke-width: 1.5;
+    animation-name: fadeIn;
+    animation-duration: 0.8s;
+}
+
+.treeLine {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: flex-start;
+    background-color: transparent;
+}
+
+.line-0 .item-0 {
+    margin-left: 194px;
+}
+
+.line-1 .item-0 {
+    margin-left: 102px;
+}
+
+.line-1 .item-1 {
+    margin-left: 122px;
+}
+
+.line-2 .item-0 {
+    margin-left: 56px;
+}
+
+.line-2 .item-1,
+.line-2 .item-2,
+.line-2 .item-3 {
+    margin-left: 32px;
+}
+
+.line-3 .item-0 {
+    margin-left: 30px;
+}
+
+.line-3 .item-1,
+.line-3 .item-2,
+.line-3 .item-3,
+.line-3 .item-4,
+.line-3 .item-5,
+.line-3 .item-6,
+.line-3 .item-7 {
+    margin-left: -14px;
 }
 
 .footer {
