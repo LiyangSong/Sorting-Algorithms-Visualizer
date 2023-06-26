@@ -1,5 +1,6 @@
 import reduceIcon from './assets/reduce.png';
 import addIcon from './assets/add.png';
+import { useState, useEffect } from 'react';
 export default function InputArea({
     currentNumbers,
     onStartSorting,
@@ -7,6 +8,10 @@ export default function InputArea({
     onAddLength,
     onReduceLength
 }) {
+    function buttondisableornot(){
+        return currentNumbers.filter(number => number.number !== "" && !(isNaN(number.number))).length <= 1;
+    }
+
     return(
         <div className="inputArea">
             <div className="inputButtons">
@@ -41,7 +46,13 @@ export default function InputArea({
             </div>
             <button
                 className="startSortingButton"
-                onClick={onStartSorting}
+                onClick={()=>{
+                    if (buttondisableornot()) {
+                        alert("Please enter two or more numbers.")
+                    } else {
+                        onStartSorting();
+                    }
+                }}
                 title="Start Sorting (Enter)"
             >
                 Start Sorting
