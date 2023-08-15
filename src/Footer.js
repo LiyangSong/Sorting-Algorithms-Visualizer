@@ -1,5 +1,8 @@
-import React from 'react';
-
+/**
+ * A simple footer including project and contact information.
+ * @author - Liyang
+ * @returns {JSX.Element} - The rendered JSX Component.
+ */
 export default function Footer() {
     return(
         <div className="footer">
@@ -9,6 +12,10 @@ export default function Footer() {
   );
 }
 
+/**
+ * A mail link as contact information.
+ * @returns {JSX.Element} - The rendered JSX Component.
+ */
 function Contact() {
     return (
         <a href="mailto:song.liy@northeastern.edu" className="footer_contact">
