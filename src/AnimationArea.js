@@ -1,8 +1,19 @@
 import Square from './Square.js';
 import { Flipper } from "react-flip-toolkit";
 
+
+/**
+ * The component containing square animations and control buttons.
+ * @author - Liyang
+ * @param {Object[{id: number, number: string, isActive: boolean, isSorted: boolean, isPointed: boolean, isSeperated: boolean, isHeaped: boolean}]} currentNumbers - The array of numbers in current step of result.
+ * @returns {JSX.Element} - The rendered JSX Component.
+ */
 export default function AnimationArea({ currentNumbers }) {
+    // Use a state to indicate whether squares should be shown in heap tree format.
     const isHeaped = currentNumbers.some((number) => number.isHeaped);
+
+    // The heap tree structure.
+    // Notice that total number of nodes is 10 as no more than 10 numbers would be inputted.
     const treeDepth = [
         {depth: 0, numberIndex: [0]},
         {depth: 1, numberIndex: [1, 2]},
@@ -10,11 +21,20 @@ export default function AnimationArea({ currentNumbers }) {
         {depth: 3, numberIndex: [7, 8, 9]},
     ];
 
+    /**
+     * The component containing squares in a given depth of the heap tree.
+     * @author - Liyang
+     * @param {number} depth - The depth of the heap tree from 0 to 3.
+     * @returns {JSX.Element} - The rendered JSX Component.
+     */
     function TreeLine({ depth }) {
         return (
             <div className={`treeLine line-${depth}`}>
+                {/* Filter numbers that belong to current line of heap tree by index of number */}
                 {currentNumbers
-                    .filter((number, index) => treeDepth.find(t => t.depth === depth).numberIndex.includes(index))
+                    .filter((number, index) =>
+                        treeDepth.find(t => t.depth === depth)
+                            .numberIndex.includes(index))
                     .map((number, index) => {
                         return (
                             <Square
@@ -31,9 +51,11 @@ export default function AnimationArea({ currentNumbers }) {
 
     return(
         <Flipper
+            // Combine all number ids and isHeaped as key to determine whether square positions have changed.
             flipKey={`${currentNumbers.map((number) => number.id).join('')}-${isHeaped}`}
             className="animationArea"
         >
+            {/* According to isHeaped, display squares as tree format or flex format. */}
             {isHeaped ? (
                 <div className="treeChart">
                     <div className="treeGrid">
@@ -42,6 +64,8 @@ export default function AnimationArea({ currentNumbers }) {
                         <TreeLine depth={2} />
                         <TreeLine depth={3} />
                     </div>
+
+                    {/* Draw lines in the heap tree. */}
                     <svg>
                         <line x1="212" y1="18" x2="120" y2="68" />
                         {currentNumbers.length > 2 &&
