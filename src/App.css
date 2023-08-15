@@ -13,14 +13,6 @@
     flex: 1 1 auto;
 }
 
-
-.layout {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .header {
     font-size: 17px;
     text-decoration: None;
@@ -428,6 +420,7 @@ input[type="range"]:hover::-webkit-slider-thumb {
 
 .seperated {
     margin-right: 30px;
+    transition: margin-right 0.25s ease-in;
 }
 
 .pointer {
