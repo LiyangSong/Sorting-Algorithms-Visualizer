@@ -12,7 +12,7 @@ const initialNumbers = [
     {id: 3, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false, isHeaped: false},
     {id: 4, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false, isHeaped: false},
     {id: 5, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false, isHeaped: false}
-]
+];
 
 export const initialState = {
     status: "input",
@@ -20,7 +20,7 @@ export const initialState = {
     currentNumbers: initialNumbers,
     step: 0,
     log: "Ready to sort."
-}
+};
 
 export const ACTION = {
     INITIALIZE: "initialize",
@@ -36,12 +36,44 @@ export const ACTION = {
     JUMPTOCOMPLETE: "jumpToComplete"
 };
 
-export default function reducer(state, action) {
+const getSortResult = (sortType, startNumbers) => {
+    let result;
+    switch (sortType) {
+        case "bubbleSort":
+            result = bubbleSortResult(startNumbers);
+            break;
+        case "insertionSort":
+            result = insertionSortResult(startNumbers);
+            break;
+        case "selectionSort":
+            result = selectionSortResult(startNumbers);
+            break;
+        case "quickSort":
+            result = quickSortResult(startNumbers);
+            break;
+        case "mergeSort":
+            result = mergeSortResult(startNumbers);
+            break;
+        case "heapSort":
+            result = heapSortResult(startNumbers);
+            break;
+    }
+    return result;
+};
+
+const runSort= (sortType, startNumbers, step) => {
+    const result = getSortResult(sortType, startNumbers);
+    const currentResult = result.find(r => r.step === step);
+    return [currentResult.numbers, currentResult.log];
+};
+
+export const reducer = (state, action) => {
     switch(action.type) {
         case "initialize": {
             return initialState;
         }
 
+        // Update 'currentNumbers' when users input a new number.
         case "inputNumbers": {
             const currentNumbers = state.currentNumbers.map((number) => {
                 return number.id === action.id ? {
@@ -61,6 +93,7 @@ export default function reducer(state, action) {
             };
         }
 
+        // Add the length of 'currentNumbers' by 1 when add button is clicked in the input area.
         case "addLength": {
             const currentNumbers = state.currentNumbers.length < 10 ? [
                 ...state.currentNumbers, {
@@ -80,6 +113,7 @@ export default function reducer(state, action) {
             };
         }
 
+        // Reduce the length of 'currentNumbers' by 1 when reduce button is clicked in the input area.
         case "reduceLength": {
             const currentNumbers = state.currentNumbers.length > 2 ?
                 state.currentNumbers.slice(0, state.currentNumbers.length - 1) : [...state.currentNumbers];
@@ -90,6 +124,8 @@ export default function reducer(state, action) {
             };
         }
 
+        // Filter valid numbers and change status from 'input' to 'ready to run'
+        // to close input area and ready to run the sorting algorithm.
         case "startSorting": {
             const currentNumbers = state.currentNumbers.filter((number) =>
                 number.number !== "" && !(isNaN(number.number))
@@ -103,6 +139,7 @@ export default function reducer(state, action) {
             };
         }
 
+        // Add 'step' by 1 and render corresponding numbers in this step.
         case "stepForward": {
             let newState = {...state};
             if (state.currentNumbers.some((number) => number.isSorted === false) ||
@@ -117,6 +154,7 @@ export default function reducer(state, action) {
             return newState;
         }
 
+        // Reduce 'step' by 1 and render corresponding numbers in this step.
         case "stepBackward": {
             let newState = {...state};
             if (newState.step > 0) {
@@ -129,6 +167,7 @@ export default function reducer(state, action) {
             return newState;
         }
 
+        // Auto run, pause, or restart the sorting algorithm in different statuses.
         case "autoRun": {
             switch(state.status) {
                 case "ready to run": {
@@ -171,6 +210,7 @@ export default function reducer(state, action) {
             }
         }
 
+        // Jump to step 0 and render corresponding numbers.
         case "jumpToStart": {
             return {
                 ...state,
@@ -181,6 +221,7 @@ export default function reducer(state, action) {
             };
         }
 
+        // Jump to the last step and render corresponding numbers.
         case "jumpToComplete": {
             let newState = {...state, status: "complete"};
             newState.step = getSortResult(action.sortType, newState.startNumbers).length - 1;
@@ -188,35 +229,6 @@ export default function reducer(state, action) {
             return newState;
         }
     }
-}
+};
 
-function runSort(sortType, startNumbers, step) {
-    const result = getSortResult(sortType, startNumbers);
-    const currentResult = result.find(r => r.step === step);
-    return [currentResult.numbers, currentResult.log];
-}
-
-function getSortResult(sortType, startNumbers) {
-    let result;
-    switch (sortType) {
-        case "bubbleSort":
-            result = bubbleSortResult(startNumbers);
-            break;
-        case "insertionSort":
-            result = insertionSortResult(startNumbers);
-            break;
-        case "selectionSort":
-            result = selectionSortResult(startNumbers);
-            break;
-        case "quickSort":
-            result = quickSortResult(startNumbers);
-            break;
-        case "mergeSort":
-            result = mergeSortResult(startNumbers);
-            break;
-        case "heapSort":
-            result = heapSortResult(startNumbers);
-            break;
-    }
-    return result;
-}
+export default reducer;
