@@ -1,6 +1,12 @@
-import time from './assets/time.png'
-import drive from './assets/drive.png'
+import time from '../assets/time.png'
+import drive from '../assets/drive.png'
 
+/**
+ * Brief description as well as time and space complexities regarding each sorting algorithm.
+ * @author - Liyang, Yue
+ * @param {string} sortType - The current sorting algorithm.
+ * @returns {JSX.Element} - The rendered JSX Component.
+ */
 export default function DescriptionArea({ sortType }) {
     const descriptions = {
         "bubbleSort": "Bubble sort is a sorting algorithm that compares two adjacent elements and swaps them until they are in the intended order.",

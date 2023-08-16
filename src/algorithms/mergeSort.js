@@ -1,6 +1,12 @@
-import { deepCopy } from "../utils";
+import deepCopy from '../utils/deepCopy.js';
 
-export default function mergeSortResult(startNumbers) {
+/**
+ * Implement Merge Sort and record results of algorithm in each step.
+ * @author - Liyang
+ * @param {{id: number, number: string, isActive: boolean, isSorted: boolean, isPointed: boolean, isSeperated: boolean, isHeaped: boolean}[]} startNumbers - Pass valid user input as start numbers of sorting algorithm.
+ * @returns {{step: number, numbers: Object[], log: string}[]} - Sorting result and log in each step.
+ */
+const mergeSortResult = (startNumbers) => {
     let result = [{
         step: 0,
         numbers: startNumbers,
@@ -10,43 +16,7 @@ export default function mergeSortResult(startNumbers) {
     let currentNumbers = deepCopy(startNumbers);
     let log;
 
-    mergeSort(currentNumbers, 0, currentNumbers.length - 1);
-
-    for (let n = 0; n < currentNumbers.length; n++) {
-        currentNumbers[n].isSorted = true;
-    }
-
-    result.push({
-        step: currentStep + 1,
-        numbers: currentNumbers,
-        log: "All set.\nSorting completed.",
-    });
-
-    return result;
-
-    function mergeSort(array, lowIndex, highIndex) {
-        if (lowIndex >= highIndex) {
-            return;
-        }
-
-        let midIndex = Math.floor((lowIndex + highIndex) / 2);
-        array[midIndex].isSeperated = true;
-        array[midIndex].isPointed = true;
-        currentStep++;
-        log = `Separate array [${lowIndex}, ${highIndex}] by ${array[midIndex].number}.`;
-        result.push({
-            step: currentStep,
-            numbers: deepCopy(array),
-            log: log
-        });
-        array[midIndex].isPointed = false;
-
-        mergeSort(array, lowIndex, midIndex);
-        mergeSort(array, midIndex + 1, highIndex);
-        merge(array, lowIndex, midIndex, highIndex);
-    }
-
-    function merge(array, lowIndex, midIndex, highIndex) {
+    const merge = (array, lowIndex, midIndex, highIndex) => {
         currentStep++;
         log = `Merge array [${lowIndex}, ${midIndex}] and [${midIndex + 1}, ${highIndex}].`
         for (let n = lowIndex; n <= highIndex; n++) {
@@ -149,5 +119,43 @@ export default function mergeSortResult(startNumbers) {
         for (let n = lowIndex; n <= highIndex; n++) {
             array[n].isActive = false;
         }
+    };
+
+    const mergeSort = (array, lowIndex, highIndex) => {
+        if (lowIndex >= highIndex) {
+            return;
+        }
+
+        let midIndex = Math.floor((lowIndex + highIndex) / 2);
+        array[midIndex].isSeperated = true;
+        array[midIndex].isPointed = true;
+        currentStep++;
+        log = `Separate array [${lowIndex}, ${highIndex}] by ${array[midIndex].number}.`;
+        result.push({
+            step: currentStep,
+            numbers: deepCopy(array),
+            log: log
+        });
+        array[midIndex].isPointed = false;
+
+        mergeSort(array, lowIndex, midIndex);
+        mergeSort(array, midIndex + 1, highIndex);
+        merge(array, lowIndex, midIndex, highIndex);
+    };
+
+    mergeSort(currentNumbers, 0, currentNumbers.length - 1);
+
+    for (let n = 0; n < currentNumbers.length; n++) {
+        currentNumbers[n].isSorted = true;
     }
-}
+
+    result.push({
+        step: currentStep + 1,
+        numbers: currentNumbers,
+        log: "All set.\nSorting completed.",
+    });
+
+    return result;
+};
+
+export default mergeSortResult;

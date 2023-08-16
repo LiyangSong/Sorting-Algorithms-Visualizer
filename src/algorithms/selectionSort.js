@@ -1,6 +1,13 @@
-import { deepCopy, swap } from "../utils.js";
+import deepCopy from '../utils/deepCopy.js';
+import swap from '../utils/swap.js';
 
-export default function selectionSortResult(startNumbers) {
+/**
+ * Run Selection Sort and record results of algorithm in each step.
+ * @author - Yue
+ * @param {{id: number, number: string, isActive: boolean, isSorted: boolean, isPointed: boolean, isSeperated: boolean, isHeaped: boolean}[]} startNumbers - Pass valid user input as start numbers of sorting algorithm.
+ * @returns {{step: number, numbers: Object[], log: string}[]} - Sorting result and log in each step.
+ */
+const selectionSortResult = (startNumbers) => {
     let result = [{
         step: 0,
         numbers: startNumbers,
@@ -71,4 +78,6 @@ export default function selectionSortResult(startNumbers) {
     });
 
     return result;
-}
+};
+
+export default selectionSortResult;
