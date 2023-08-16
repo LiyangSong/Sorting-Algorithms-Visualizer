@@ -6,6 +6,7 @@ import mergeSortResult from './algorithms/mergeSort.js';
 import heapSortResult from './algorithms/heapSort.js';
 import { deepCopy } from "./utils.js";
 
+// Set all numbers as empty at the beginning.
 const initialNumbers = [
     {id: 1, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false, isHeaped: false},
     {id: 2, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false, isHeaped: false},
@@ -14,6 +15,8 @@ const initialNumbers = [
     {id: 5, number: "", isActive: false, isSorted: false, isPointed: false, isSeperated: false, isHeaped: false}
 ];
 
+// Set initial state.status as input to show the InputArea component
+// to allow users inputting numbers.
 export const initialState = {
     status: "input",
     startNumbers: [],
@@ -22,6 +25,7 @@ export const initialState = {
     log: "Ready to sort."
 };
 
+// Define Action strings for convenience of usage.
 export const ACTION = {
     INITIALIZE: "initialize",
     INPUTNUMBERS: "inputNumbers",
@@ -36,6 +40,13 @@ export const ACTION = {
     JUMPTOCOMPLETE: "jumpToComplete"
 };
 
+/**
+ * Call corresponding sorting algorithm and get result list.
+ * @author - Liyang
+ * @param {string} sortType - The current sorting algorithm.
+ * @param {{id: number, number: string, isActive: boolean, isSorted: boolean, isPointed: boolean, isSeperated: boolean, isHeaped: boolean}[]} startNumbers - Pass valid user input as start numbers of sorting algorithm.
+ * @returns {{step: number, numbers: Object[], log: string}[]} - Sorting result and log in each step.
+ */
 const getSortResult = (sortType, startNumbers) => {
     let result;
     switch (sortType) {
@@ -61,13 +72,28 @@ const getSortResult = (sortType, startNumbers) => {
     return result;
 };
 
+/**
+ * Call `getSortResult` to run corresponding sorting algorithm, and extract result in one specific step.
+ * @author - Liyang
+ * @param {string} sortType
+ * @param {{id: number, number: string, isActive: boolean, isSorted: boolean, isPointed: boolean, isSeperated: boolean, isHeaped: boolean}[]} startNumbers - Pass valid user input as start numbers of sorting algorithm.
+ * @param {number} step - Current step number.
+ * @returns {[Object[], string]} - Sorting result and log in current step.
+ */
 const runSort= (sortType, startNumbers, step) => {
     const result = getSortResult(sortType, startNumbers);
     const currentResult = result.find(r => r.step === step);
     return [currentResult.numbers, currentResult.log];
 };
 
-export const reducer = (state, action) => {
+/**
+ * Receive current state and action as arguments and return updated state.
+ * @author - Liyang
+ * @param {{status: string, startNumbers: Object[], currentNumbers: Object[], step: number, log: string}} state - Current state.
+ * @param {object} action - Action to be dispatched.
+ * @returns {{status: string, startNumbers: Object[], currentNumbers: Object[], step: number, log: string}} - Updated state.
+ */
+const reducer = (state, action) => {
     switch(action.type) {
         case "initialize": {
             return initialState;

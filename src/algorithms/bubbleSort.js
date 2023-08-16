@@ -3,10 +3,10 @@ import { deepCopy, swap } from "../utils.js";
 /**
  * Implement Bubble Sort and record results of algorithm in each step.
  * @author - Liyang
- * @param {Object[{id: number, number: string, isActive: boolean, isSorted: boolean, isPointed: boolean, isSeperated: boolean, isHeaped: boolean}]} startNumbers - Pass valid user input as start numbers of sorting algorithm.
- * @returns {Object[{step: number, numbers: Object[], log: string}]} - Sorting result and log in each step.
+ * @param {{id: number, number: string, isActive: boolean, isSorted: boolean, isPointed: boolean, isSeperated: boolean, isHeaped: boolean}[]} startNumbers - Pass valid user input as start numbers of sorting algorithm.
+ * @returns {{step: number, numbers: Object[], log: string}[]} - Sorting result and log in each step.
  */
-export default function bubbleSortResult(startNumbers) {
+const bubbleSortResult = (startNumbers) => {
     let result = [{
         step: 0,
         numbers: startNumbers,
@@ -66,4 +66,6 @@ export default function bubbleSortResult(startNumbers) {
         log: "All set.\nSorting completed."
     });
     return result;
-}
+};
+
+export default bubbleSortResult;

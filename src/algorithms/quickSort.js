@@ -1,6 +1,12 @@
 import { deepCopy, swap } from "../utils.js";
 
-export default function quickSortResult(startNumbers) {
+/**
+ * Implement Quick Sort and record results of algorithm in each step.
+ * @author - Liyang
+ * @param {{id: number, number: string, isActive: boolean, isSorted: boolean, isPointed: boolean, isSeperated: boolean, isHeaped: boolean}[]} startNumbers - Pass valid user input as start numbers of sorting algorithm.
+ * @returns {{step: number, numbers: Object[], log: string}[]} - Sorting result and log in each step.
+ */
+const quickSortResult = (startNumbers) => {
     let result = [{
         step: 0,
         numbers: startNumbers,
@@ -9,31 +15,7 @@ export default function quickSortResult(startNumbers) {
     let currentStep = 0;
     let currentNumbers = deepCopy(startNumbers);
 
-    quickSort(currentNumbers, 0, currentNumbers.length - 1);
-
-    for (let n = 0; n < currentNumbers.length; n++) {
-        currentNumbers[n].isSorted = true;
-    }
-
-    result.push({
-        step: currentStep + 1,
-        numbers: deepCopy(currentNumbers),
-        log: "All set.\nSorting completed.",
-    });
-
-    return result;
-
-    function quickSort(array, lowIndex, highIndex) {
-        if (lowIndex >= highIndex) {
-            return;
-        }
-
-        let pivotIndex = partition(array, lowIndex, highIndex);
-        quickSort(array, lowIndex, pivotIndex - 1);
-        quickSort(array, pivotIndex + 1, highIndex);
-    }
-
-    function partition(array, lowIndex, highIndex) {
+    const partition = (array, lowIndex, highIndex) => {
         let pivotIndex = highIndex;
         let tempIndex = lowIndex;
         array[pivotIndex].isPointed = true;
@@ -106,6 +88,32 @@ export default function quickSortResult(startNumbers) {
         array[tempIndex].isPointed = false;
 
         return tempIndex;
+    };
+
+    const quickSort = (array, lowIndex, highIndex) => {
+        if (lowIndex >= highIndex) {
+            return;
+        }
+
+        let pivotIndex = partition(array, lowIndex, highIndex);
+        quickSort(array, lowIndex, pivotIndex - 1);
+        quickSort(array, pivotIndex + 1, highIndex);
+    };
+
+    quickSort(currentNumbers, 0, currentNumbers.length - 1);
+
+    for (let n = 0; n < currentNumbers.length; n++) {
+        currentNumbers[n].isSorted = true;
     }
-}
+
+    result.push({
+        step: currentStep + 1,
+        numbers: deepCopy(currentNumbers),
+        log: "All set.\nSorting completed.",
+    });
+
+    return result;
+};
+
+export default quickSortResult;
 

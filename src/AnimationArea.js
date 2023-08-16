@@ -5,7 +5,7 @@ import { Flipper } from "react-flip-toolkit";
 /**
  * The component containing square animations and control buttons.
  * @author - Liyang
- * @param {Object[{id: number, number: string, isActive: boolean, isSorted: boolean, isPointed: boolean, isSeperated: boolean, isHeaped: boolean}]} currentNumbers - The array of numbers in current step of result.
+ * @param {{id: number, number: string, isActive: boolean, isSorted: boolean, isPointed: boolean, isSeperated: boolean, isHeaped: boolean}[]} currentNumbers - The array of numbers in current step of result.
  * @returns {JSX.Element} - The rendered JSX Component.
  */
 export default function AnimationArea({ currentNumbers }) {
@@ -52,6 +52,7 @@ export default function AnimationArea({ currentNumbers }) {
     return(
         <Flipper
             // Combine all number ids and isHeaped as key to determine whether square positions have changed.
+            // When flipKey changed, generate animations by `react-flip-toolkit` package.
             flipKey={`${currentNumbers.map((number) => number.id).join('')}-${isHeaped}`}
             className="animationArea"
         >
