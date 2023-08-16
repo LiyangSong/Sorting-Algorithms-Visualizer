@@ -136,11 +136,7 @@ export default function ContentProvider({ sortType }) {
     };
 
     // When current route get changed or refreshed, dispatch the initialization of state to initialize all information.
-    useEffect(() => {
-        dispatch({
-            type: ACTION.INITIALIZE
-        })
-    }, [useLocation()]);
+    useEffect(() => dispatch({type: ACTION.INITIALIZE}), [useLocation()]);
 
     useEffect(() => {
         // When status changed to 'auto running', which means start button got clicked,
@@ -173,7 +169,7 @@ export default function ContentProvider({ sortType }) {
         // Clean up the event listener when the component unmounts.
         return () => document.removeEventListener('keydown', handleKeyDown);
     })
-
+    console.log(state);
     return(
         <div className="contentProvider">
             {state.status === "input" ? (
