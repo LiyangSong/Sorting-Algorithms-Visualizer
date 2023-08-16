@@ -146,7 +146,10 @@ export default function ContentProvider({ sortType }) {
         }
         // When status changed to 'complete' or 'pause', which means pause button got clicked or algorithm reached final step,
         // clear the created time interval to end the auto execution of 'handleStepForward'.
-        if (state.status === "complete" || state.status === "pause") {
+        // Add `input` to handle a bug:
+        // when `auto running` and switch to another route directly,
+        // the currently running interval may still trigger `stepForward` even with initial empty numbers.
+        if (state.status === "complete" || state.status === "pause" || state.status === "input") {
             clearInterval(intervalRef.current);
         }
     }, [state.status]);
