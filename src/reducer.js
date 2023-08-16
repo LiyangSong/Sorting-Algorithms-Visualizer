@@ -167,6 +167,10 @@ const reducer = (state, action) => {
 
         // Add 'step' by 1 and render corresponding numbers in this step.
         case "stepForward": {
+            // Handle a bug: when `auto running` and switch to another route directly,
+            // the currently running interval may still trigger `stepForward` even with initial empty numbers.
+            if(state.status === "input") return initialState;
+
             let newState = {...state};
             if (state.currentNumbers.some((number) => number.isSorted === false) ||
                 state.currentNumbers.some((number) => number.isActive === true) ||
