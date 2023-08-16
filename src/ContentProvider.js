@@ -169,7 +169,7 @@ export default function ContentProvider({ sortType }) {
         // Clean up the event listener when the component unmounts.
         return () => document.removeEventListener('keydown', handleKeyDown);
     })
-    console.log(state);
+
     return(
         <div className="contentProvider">
             {state.status === "input" ? (
