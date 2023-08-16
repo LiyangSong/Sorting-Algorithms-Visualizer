@@ -1,10 +1,10 @@
-import bubbleSortResult from './algorithms/bubbleSort.js';
-import insertionSortResult from './algorithms/insertionSort.js';
-import selectionSortResult from './algorithms/selectionSort.js';
-import quickSortResult from './algorithms/quickSort.js';
-import mergeSortResult from './algorithms/mergeSort.js';
-import heapSortResult from './algorithms/heapSort.js';
-import { deepCopy } from "./utils.js";
+import bubbleSortResult from '../algorithms/bubbleSort.js';
+import insertionSortResult from '../algorithms/insertionSort.js';
+import selectionSortResult from '../algorithms/selectionSort.js';
+import quickSortResult from '../algorithms/quickSort.js';
+import mergeSortResult from '../algorithms/mergeSort.js';
+import heapSortResult from '../algorithms/heapSort.js';
+import deepCopy from './deepCopy.js';
 
 // Set all numbers as empty at the beginning.
 const initialNumbers = [

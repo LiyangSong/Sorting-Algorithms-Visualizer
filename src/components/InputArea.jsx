@@ -1,5 +1,5 @@
-import reduceIcon from './assets/reduce.png';
-import addIcon from './assets/add.png';
+import reduceIcon from '../assets/reduce.png';
+import addIcon from '../assets/add.png';
 
 /**
  * The component allowing users to input numbers and filtering valid ones to start sorting algorithm.

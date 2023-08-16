@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
-import Header from './Header.js';
-import ContentProvider from "./ContentProvider.js";
-import Home from './Home.js';
+import Header from './components/Header.jsx';
+import ContentProvider from "./components/ContentProvider.jsx";
+import Home from './components/Home.jsx';
 
 
 /**

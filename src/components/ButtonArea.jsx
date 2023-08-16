@@ -1,13 +1,13 @@
-import stepBackwardButton from './assets/backward.png';
-import stepForwardButton from './assets/forward.png';
-import startButton from './assets/play.png';
-import pauseButton from './assets/pause.png';
-import jumpToStart from './assets/fast-backward.png';
-import jumpToComplete from './assets/fast-forward.png';
+import stepBackwardButton from '../assets/backward.png';
+import stepForwardButton from '../assets/forward.png';
+import startButton from '../assets/play.png';
+import pauseButton from '../assets/pause.png';
+import jumpToStart from '../assets/fast-backward.png';
+import jumpToComplete from '../assets/fast-forward.png';
 
 /**
  * The component containing control buttons of animation.
- * Button functions are predefined and passed down from 'ContentProvider.js'.
+ * Button functions are predefined and passed down from 'ContentProvider.jsx'.
  * @author - Liyang
  * @param {function} onAutoRun - The function triggered by clicking start/pause button.
  * @param {function} onStepForward - The function triggered by clicking step forward button.

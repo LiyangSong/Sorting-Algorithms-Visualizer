@@ -6,7 +6,7 @@
  * @param {Object} obj - Original object to be copied.
  * @returns {Object} - Deep copied object.
  */
-export const deepCopy = (obj) => {
+const deepCopy = (obj) => {
     let copiedObj;
 
     // Base case that primitive data types are reached.
@@ -24,15 +24,4 @@ export const deepCopy = (obj) => {
     return copiedObj;
 };
 
-/**
- * Swap two objects in array with deepCopy.
- * @author - Liyang
- * @param {object[]} array - One array of objects.
- * @param {number} i - Index of one object in array.
- * @param {number} j - Index of one object in array.
- */
-export const swap = (array, i, j) => {
-    let temp = deepCopy(array[i]);
-    array[i] = deepCopy(array[j]);
-    array[j] = temp;
-};
+export default deepCopy;

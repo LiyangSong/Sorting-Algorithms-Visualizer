@@ -1,4 +1,4 @@
-import Square from './Square.js';
+import Square from './Square.jsx';
 import { Flipper } from "react-flip-toolkit";
 
 

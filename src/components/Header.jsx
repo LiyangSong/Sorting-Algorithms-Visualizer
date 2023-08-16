@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink } from 'react-router-dom';
-import logo from './assets/sort.png';
-import githubLogo from './assets/github-mark.png';
-import menuIcon from './assets/menu.png';
-import bubbleSortIcon from './assets/bubble.png';
-import insertionSortIcon from './assets/insertion.png';
-import selectionSortIcon from './assets/selection.png';
-import quickSortIcon from './assets/quick.png';
-import mergeSortIcon from './assets/merge.png';
-import heapSortIcon from './assets/heap.png';
+import logo from '../assets/sort.png';
+import githubLogo from '../assets/github-mark.png';
+import menuIcon from '../assets/menu.png';
+import bubbleSortIcon from '../assets/bubble.png';
+import insertionSortIcon from '../assets/insertion.png';
+import selectionSortIcon from '../assets/selection.png';
+import quickSortIcon from '../assets/quick.png';
+import mergeSortIcon from '../assets/merge.png';
+import heapSortIcon from '../assets/heap.png';
 
 // Route path, name, and icon for each sorting algorithm.
 export const tabs = [

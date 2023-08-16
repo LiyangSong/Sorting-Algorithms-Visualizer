@@ -1,6 +1,6 @@
-import { tabs } from './Header.js';
+import { tabs } from './Header.jsx';
 import { NavLink } from "react-router-dom";
-import Footer from './Footer.js';
+import Footer from './Footer.jsx';
 
 /**
  * The home page with an application description and navigation to tabs.

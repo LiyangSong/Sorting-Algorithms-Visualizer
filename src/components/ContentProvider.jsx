@@ -1,12 +1,12 @@
 import { useState, useEffect, useReducer, useRef } from 'react';
 import { useLocation } from "react-router-dom";
-import DescriptionArea from './DescriptionArea.js';
-import InputArea from './InputArea.js';
-import LogArea from "./LogArea.js";
-import AnimationArea from './AnimationArea.js';
-import ButtonArea from "./ButtonArea.js";
-import Footer from './Footer.js';
-import reducer, { ACTION, initialState } from "./reducer.js";
+import DescriptionArea from './DescriptionArea.jsx';
+import InputArea from './InputArea.jsx';
+import LogArea from "./LogArea.jsx";
+import AnimationArea from './AnimationArea.jsx';
+import ButtonArea from "./ButtonArea.jsx";
+import Footer from './Footer.jsx';
+import reducer, { ACTION, initialState } from '../utils/reducer.js';
 
 /**
  * The main component containing description, input area, animation, buttons, footer, etc. of one type of sorting algorithm.

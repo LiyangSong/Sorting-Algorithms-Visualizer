@@ -1,4 +1,5 @@
-import { deepCopy, swap } from "../utils.js";
+import deepCopy from '../utils/deepCopy.js';
+import swap from '../utils/swap.js';
 
 /**
  * Run Selection Sort and record results of algorithm in each step.

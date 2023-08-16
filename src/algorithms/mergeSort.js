@@ -1,4 +1,4 @@
-import { deepCopy } from "../utils";
+import deepCopy from '../utils/deepCopy.js';
 
 /**
  * Implement Merge Sort and record results of algorithm in each step.
