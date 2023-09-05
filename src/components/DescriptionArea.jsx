@@ -1,5 +1,5 @@
-import time from '../assets/time.png'
-import drive from '../assets/drive.png'
+import time from '../assets/time.svg'
+import drive from '../assets/drive.svg'
 
 /**
  * Brief description as well as time and space complexities regarding each sorting algorithm.
