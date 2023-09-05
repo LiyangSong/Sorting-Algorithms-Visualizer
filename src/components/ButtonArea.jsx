@@ -1,9 +1,9 @@
-import stepBackwardButton from '../assets/backward.png';
-import stepForwardButton from '../assets/forward.png';
-import startButton from '../assets/play.png';
-import pauseButton from '../assets/pause.png';
-import jumpToStart from '../assets/fast-backward.png';
-import jumpToComplete from '../assets/fast-forward.png';
+import stepBackwardButton from '../assets/backward.svg';
+import stepForwardButton from '../assets/forward.svg';
+import startButton from '../assets/play.svg';
+import pauseButton from '../assets/pause.svg';
+import jumpToStart from '../assets/fast-backward.svg';
+import jumpToComplete from '../assets/fast-forward.svg';
 
 /**
  * The component containing control buttons of animation.

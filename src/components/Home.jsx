@@ -10,9 +10,14 @@ import Footer from './Footer.jsx';
 export default function Home() {
     return (
         <div className="home">
-            <p className="home-description">
-                The algorithm is the soul of programming, and sorting algorithms are the most classical algorithmic knowledge. They have undergone a long evolution, resulting in many different methods. Each algorithm has its specific use case, making it difficult to apply universally. Therefore, mastering some commonly used sorting algorithms is extremely important. So, open our webpage and learn with us!
+            <p className="home-header">
+                " Discover Sorting Algorithms Through Animation! "
             </p>
+            <div className="home-description">
+                <p>Sorting algorithms are techniques used to organize data into a specific order.</p>
+                <p>These algorithms are the building blocks of computer science and data management.</p>
+                <p>We simplify complex concepts through animated guides helping you understand algorithms from the ground up.</p>
+            </div>
             <NavArea />
             <Footer />
         </div>

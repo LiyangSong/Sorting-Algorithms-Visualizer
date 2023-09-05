@@ -1,5 +1,5 @@
 import { Flipped } from "react-flip-toolkit";
-import pointerIcon from '../assets/pointer.png';
+import pointerIcon from '../assets/pointer.svg';
 
 /**
  * The component using shape to represent one `number` in `currentNumbers`.

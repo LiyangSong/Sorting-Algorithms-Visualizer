@@ -123,11 +123,24 @@
     }
 }
 
+.home-header {
+    flex: 0 0 50px;
+    font-family: "Georgia", sans-serif;
+    color: #BBBBBB;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+    padding: 50px 150px 10px 150px;
+}
+
 .home-description {
-    flex: 0 0 200px;
-    font-size: 22px;
+    flex: 0 0 150px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     text-align: center;
-    padding: 50px 150px;
+    padding: 30px 150px;
 }
 
 .navArea {
@@ -423,8 +436,17 @@ input[type="range"]:hover::-webkit-slider-thumb {
     transition: margin-right 0.25s ease-in;
 }
 
+@keyframes rotateY {
+    0% {
+        transform: rotateY(0);
+    }
+    100% {
+        transform: rotateY(359deg);
+    }
+}
+
 .pointer {
-    animation: jump 0.5s ease-in infinite;
+    animation: rotateY 1.2s ease-in-out infinite;
 }
 
 .heaped {
