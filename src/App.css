@@ -123,11 +123,24 @@
     }
 }
 
+.home-header {
+    flex: 0 0 50px;
+    font-family: "Georgia", sans-serif;
+    color: #BBBBBB;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+    padding: 50px 150px 10px 150px;
+}
+
 .home-description {
-    flex: 0 0 200px;
-    font-size: 22px;
+    flex: 0 0 150px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     text-align: center;
-    padding: 50px 150px;
+    padding: 30px 150px;
 }
 
 .navArea {
